@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+    <startup> 
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.7.2" />
+    </startup>
+	<appSettings>
+		<!-- Timer Polling Interval -->
+		<add key="TimerPollingInterval" value="1000"/>
+		
+		<!-- ExCore Connection Settings -->
+		<add key="UTCOffset" value="07:00:00" />
+		<add key="ExCoreHost" value="EXCR86MIO40" />
+		<add key="ExCorePort" value="443" />
+		<add key="ExCoreUsername" value="Administrator" />
+		<add key="ExCorePasswordkey" value="ExCoreKey" />
+		<add key="ExCorePassword" value="uFlZ/eG69mA5BooouzUciIy1Cyrgzdnp" />
+
+		<!-- Trace Level setting (higher level includes lower levels). -->
+		<add key="TraceLevel" value="6" />
+	</appSettings>
+	<system.serviceModel>
+		<protocolMapping>
+			<add scheme="https" binding="basicHttpBinding"></add>
+		</protocolMapping>
+		<client configSource="Endpoints.config"></client>
+		<behaviors>
+			<endpointBehaviors>
+				<behavior name="DefaultBehavior">
+					<dataContractSerializer maxItemsInObjectGraph="2147483647"></dataContractSerializer>
+				</behavior>
+				<behavior name="webBehavior">
+					<webHttp defaultOutgoingResponseFormat="Json" faultExceptionEnabled="true" defaultBodyStyle="Wrapped" automaticFormatSelectionEnabled="false"></webHttp>
+				</behavior>
+			</endpointBehaviors>
+			<serviceBehaviors>
+				<behavior name="DefaultBehavior">
+					<serviceMetadata httpGetEnabled="true"></serviceMetadata>
+					<serviceDebug includeExceptionDetailInFaults="true"></serviceDebug>
+					<serviceThrottling maxConcurrentCalls="4000" maxConcurrentInstances="4000" maxConcurrentSessions="4000"></serviceThrottling>
+				</behavior>
+				<behavior name="DefaultBehaviorSSL">
+					<serviceMetadata httpsGetEnabled="true"></serviceMetadata>
+					<serviceDebug includeExceptionDetailInFaults="true"></serviceDebug>
+					<serviceThrottling maxConcurrentCalls="4000" maxConcurrentInstances="4000" maxConcurrentSessions="4000"></serviceThrottling>
+				</behavior>
+			</serviceBehaviors>
+		</behaviors>
+		<bindings>
+			<basicHttpBinding>
+				<binding name="DefaultBinding" sendTimeout="00:05:00" receiveTimeout="00:05:00" maxReceivedMessageSize="2147483647">
+					<readerQuotas maxDepth="2147483647" maxStringContentLength="2147483647" maxArrayLength="2147483647" maxBytesPerRead="2147483647" maxNameTableCharCount="2147483647"></readerQuotas>
+				</binding>
+				<!-- DefaultBindingSSL is used for SSL mode -->
+				<binding name="DefaultBindingSSL" sendTimeout="00:05:00" receiveTimeout="00:05:00" maxReceivedMessageSize="2147483647">
+					<readerQuotas maxDepth="2147483647" maxStringContentLength="2147483647" maxArrayLength="2147483647" maxBytesPerRead="2147483647" maxNameTableCharCount="2147483647"></readerQuotas>
+					<security mode="Transport">
+						<transport clientCredentialType="None"></transport>
+					</security>
+				</binding>
+			</basicHttpBinding>
+			<webHttpBinding>
+				<binding name="DefaultBinding" sendTimeout="00:05:00" receiveTimeout="00:05:00" maxReceivedMessageSize="2147483647">
+					<readerQuotas maxDepth="2147483647" maxStringContentLength="2147483647" maxArrayLength="2147483647" maxBytesPerRead="2147483647" maxNameTableCharCount="2147483647"></readerQuotas>
+					<security mode="None">
+						<transport clientCredentialType="None"></transport>
+					</security>
+				</binding>
+				<binding name="DefaultBindingSSL" sendTimeout="00:05:00" receiveTimeout="00:05:00" maxReceivedMessageSize="2147483647">
+					<readerQuotas maxDepth="2147483647" maxStringContentLength="2147483647" maxArrayLength="2147483647" maxBytesPerRead="2147483647" maxNameTableCharCount="2147483647"></readerQuotas>
+					<security mode="Transport">
+						<transport clientCredentialType="None"></transport>
+					</security>
+				</binding>
+			</webHttpBinding>
+		</bindings>
+		<serviceHostingEnvironment aspNetCompatibilityEnabled="true" multipleSiteBindingsEnabled="true"></serviceHostingEnvironment>
+		<services>
+			<service behaviorConfiguration="DefaultBehaviorSSL" name="WebClientPortal.SilverlightRoutingService">
+				<endpoint address="" binding="basicHttpBinding" bindingConfiguration="DefaultBindingSSL" contract="System.ServiceModel.Routing.IRequestReplyRouter" />
+				<endpoint address="mex" binding="mexHttpsBinding" contract="IMetadataExchange" />
+			</service>
+			<service behaviorConfiguration="DefaultBehaviorSSL" name="WebClientPortal.PortalStudioService">
+				<endpoint address="" binding="basicHttpBinding" bindingConfiguration="DefaultBindingSSL" contract="WebClientPortal.PortalStudioService" />
+				<endpoint address="web" behaviorConfiguration="webBehavior" binding="webHttpBinding" bindingConfiguration="DefaultBindingSSL" contract="WebClientPortal.PortalStudioService" />
+				<endpoint address="mex" binding="mexHttpsBinding" contract="IMetadataExchange" />
+			</service>
+			<service behaviorConfiguration="DefaultBehaviorSSL" name="WebClientPortal.ApolloPortalService">
+				<endpoint address="" binding="basicHttpBinding" bindingConfiguration="DefaultBindingSSL" contract="WebClientPortal.ApolloPortalService" />
+				<endpoint address="web" behaviorConfiguration="webBehavior" binding="webHttpBinding" bindingConfiguration="DefaultBindingSSL" contract="WebClientPortal.ApolloPortalService" />
+				<endpoint address="mex" binding="mexHttpsBinding" contract="IMetadataExchange" />
+			</service>
+			<service behaviorConfiguration="DefaultBehaviorSSL" name="WebClientPortal.SmartScanService">
+				<endpoint address="" binding="basicHttpBinding" bindingConfiguration="DefaultBindingSSL" contract="WebClientPortal.SmartScanService" />
+				<endpoint address="web" behaviorConfiguration="webBehavior" binding="webHttpBinding" bindingConfiguration="DefaultBindingSSL" contract="WebClientPortal.SmartScanService" />
+				<endpoint address="mex" binding="mexHttpsBinding" contract="IMetadataExchange" />
+			</service>
+		</services>
+	</system.serviceModel>
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+      <dependentAssembly>
+        <assemblyIdentity name="System.Runtime.CompilerServices.Unsafe" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-4.0.4.1" newVersion="4.0.4.1" />
+      </dependentAssembly>
+    </assemblyBinding>
+  </runtime>
+</configuration>
