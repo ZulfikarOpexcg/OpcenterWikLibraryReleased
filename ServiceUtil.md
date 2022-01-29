@@ -1,4 +1,5 @@
 # Service Util **API**
+
 ## REUSABLE FUNCTION
 ### 1. ProcessResult
 This function is used for check the Result of ServiceTransaction MES success or not, this function will return boolean (success/not success) and return string text.
