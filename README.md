@@ -16,6 +16,46 @@ Rename `App.config.example` to `App.config` and changes your configuration insid
 Copy `Endpoints.config` into your project. and make properties Copy to Output = Copy always. </br></br>
 ![End Points](./Images/Endpoints.jpg)
 
+Edit all URL inside `Endpoints.config` based on the `Opcenter Server`, for example:
+```
+https://excr86mio40/CamstarWCFServices/QueryService.svc
+
+to
+
+https://<your mes server>/CamstarWCFServices/QueryService.svc
+```
+
+# Add Assembly Name in `Program.cs`
+This is very **important** steps!
+Add syntax below in your `Program.cs` inside `static void Main(string[] args){}`
+```C#
+AppSettings.AssemblyName = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
+```
+For Example
+```C#
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace LaserPrinting
+{
+    static class Program
+    {
+        [STAThread]
+        static void Main()
+        {
+            AppSettings.AssemblyName = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name; // This one, add in your project !!!
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Main());
+        }
+    }
+}
+
+```
+
 # Enabled Event Log on windows Machine
 - Log on to the computer as an administrator.
 - Click Start, click Run, type Regedit in the Open box, and then click OK. - The Registry Editor window appears.
