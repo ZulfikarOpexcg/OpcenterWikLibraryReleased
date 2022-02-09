@@ -515,7 +515,7 @@ bool ExecuteResourceThruput(string ResourceName, double Qty = 0, string UOM = ""
 
 ## TEAM TRACKING TXN FUNCTION
 ### 1. AddTeamMembers
-This function is used for add some employee to certain Team
+This function is used to add some employee to certain Team
 #### **Usage example**
 ```C#
 ServiceUtil oServiceUtil = new ServiceUtil();
@@ -529,7 +529,7 @@ oServiceUtil.AddTeamMembers("TeamLaser", cEmployeeList);
 bool AddTeamMembers(string TeamName, List<dynamic> EmployeeList, bool IgnoreException = true)
 ```
 ### 2. RemoveTeamMembers
-This function is used for remove some employee to certain Team
+This function is used to remove some employee to certain Team
 #### **Usage example**
 ```C#
 ServiceUtil oServiceUtil = new ServiceUtil();
@@ -541,4 +541,54 @@ oServiceUtil.RemoveTeamMembers("TeamLaser", cEmployeeList);
 #### **API**
 ```C#
 bool RemoveTeamMembers(string TeamName, List<dynamic> EmployeeList, bool IgnoreException = true)
+```
+### 3. EmployeeTrackingSignInStatus
+This function is used to get the list area working of employee which still sign in
+#### **Usage example**
+```C#
+ServiceUtil oService = new ServiceUtil();
+mdTeamTrackingStatus[] oList = oService.EmployeeTrackingSignInStatus("Administrator");
+if (oList.Length > 0)
+{
+    //Print your object in here
+}
+```
+#### **API**
+```C#
+mdTeamTrackingStatus[] EmployeeTrackingSignInStatus(string NameEmployee, bool IgnoreException = true)
+```
+### 4. ExecuteSignInEmployee
+This function is used to Sign In employee to specific area can be resource, operation, spec, workcenter, workcell, workstation.
+#### **Usage example**
+```C#
+ServiceUtil oService = new ServiceUtil();
+bool statusSignIn = oService.ExecuteSignInEmployee("Administrator", "BW01-NM1-LS");
+if (statusSignIn) MessageBox.Show("Success Sign In");
+else MessageBox.Show("Failed to Sign In");
+```
+#### **API**
+```C#
+bool ExecuteSignInEmployee(string NameEmployee, string Resource = "", string Operation = "", string Spec = "", string SpecRevision = "", string WorkCell = "", string WorkCenter = "", string Workstation = "",  bool IgnoreException = true)
+```
+### 5. ExecuteSignOutEmploye
+This function is used to Sign Out employee, can be multiple area using 1 time execute.
+#### **Usage example**
+```C#
+ServiceUtil oService = new ServiceUtil();
+mdTeamTrackingStatus[] oList = oService.EmployeeTrackingSignInStatus("Administrator");
+oList = oList.Take(oList.Count() - 1).ToArray();
+bool statusSignIn = oService.ExecuteSignOutEmploye("Administrator", oList);
+if (statusSignIn) MessageBox.Show("Success Sign Out");
+else MessageBox.Show("Failed to Sign Out");
+
+//or without list, by default will be sign out for all area list login of employee
+
+ServiceUtil oService = new ServiceUtil();
+bool statusSignIn = oService.ExecuteSignOutEmploye("Administrator");
+if (statusSignIn) MessageBox.Show("Success Sign Out");
+else MessageBox.Show("Failed to Sign Out");
+```
+#### **API**
+```C#
+ExecuteSignOutEmploye(string NameEmployee, mdTeamTrackingStatus[] oMdTeamTrackingStatuses = null, bool IgnoreException = true)
 ```
