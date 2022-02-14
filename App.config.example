@@ -34,37 +34,6 @@
 		<add key="ErrorUNCPathPassword" value=""/>
 		<add key="ErrorFolder" value="C:\Temp\ExCoreService\ErrorFiles" />
 
-		<!-- File Processing Folders for Orders -->
-		<add key="OrderSourceUNCPath" value=""/>
-		<add key="OrderSourceUNCPathUsername" value=""/>
-		<add key="OrderSourceUNCPathPassword" value=""/>
-		<add key="OrderSourceFolder" value="C:\Temp\ExCoreService\Order\SourceFiles" />
-
-		<add key="OrderBOMSourceUNCPath" value=""/>
-		<add key="OrderBOMSourceUNCPathUsername" value=""/>
-		<add key="OrderBOMSourceUNCPathPassword" value=""/>
-		<add key="OrderBOMSourceFolder" value="C:\Temp\ExCoreService\OrderBOM\SourceFiles" />
-
-		<add key="OrderCompletedUNCPath" value=""/>
-		<add key="OrderCompletedUNCPathUsername" value=""/>
-		<add key="OrderCompletedUNCPathPassword" value=""/>
-		<add key="OrderCompletedFolder" value="C:\Temp\ExCoreService\Order\CompletedFiles" />
-
-		<add key="OrderBOMCompletedUNCPath" value=""/>
-		<add key="OrderBOMCompletedUNCPathUsername" value=""/>
-		<add key="OrderBOMCompletedUNCPathPassword" value=""/>
-		<add key="OrderBOMCompletedFolder" value="C:\Temp\ExCoreService\OrderBOM\CompletedFiles" />
-
-		<add key="OrderErrorUNCPath" value=""/>
-		<add key="OrderErrorUNCPathUsername" value=""/>
-		<add key="OrderErrorUNCPathPassword" value=""/>
-		<add key="OrderErrorFolder" value="C:\Temp\ExCoreService\Order\ErrorFiles" />
-
-		<add key="OrderBOMErrorUNCPath" value=""/>
-		<add key="OrderBOMErrorUNCPathUsername" value=""/>
-		<add key="OrderBOMErrorUNCPathPassword" value=""/>
-		<add key="OrderBOMErrorFolder" value="C:\Temp\ExCoreService\OrderBOM\ErrorFiles" />
-
 		<add key="Resource" value="BW01-NM1-LS"/>
 		<add key="Line" value="BW01-NM1"/>
 
