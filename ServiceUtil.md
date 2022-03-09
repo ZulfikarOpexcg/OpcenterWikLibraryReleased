@@ -168,7 +168,56 @@ ProductChanges oProduct = GetProduct("Name Product");
 ```C#
 ProductChanges GetProduct(string ProductName, string ProductRevision = "", bool IgnoreException = true)
 ```
-### 2. GetWorkflow
+### 2. GetImage
+This function is used when we want to getting the Details of Image that available on MES Opcenter
+#### **Usage example**
+```C#
+isImageChanges oImage = oServiceUtil.GetImage('Name of Document');
+if (oImage != null)
+{
+    pictureBox1.Load(oImage.Identifier.ToString());
+}
+```
+#### **API**
+```C#
+public isImageChanges GetImage(string Image, string ImageRevision = "", bool IgnoreException = true)
+```
+### 3. DocumentChanges
+This function is used to get the details of Document
+#### **Usage example**
+```C#
+DocumentChanges oDocument = oServiceUtil.GetDocument('Name of Document');
+if (oDocument != null)
+{
+    axAcroPDF1.src = oDocument.Identifier.ToString();
+}
+```
+#### **API**
+```C#
+public DocumentChanges GetDocument(string Document, string DocumentRevision = "", bool IgnoreException = true)
+```
+### 4. DocumentSetChanges
+This function is used to get the details of Document set, document set is collection of document
+#### **Usage example**
+```C#
+DocumentSetChanges oDocumentSet = oServiceUtil.GetDocumentSet("Name of Document Set");
+if (oDocumentSet != null)
+{
+    if (oDocumentSet.DocumentEntries.Length > 0)
+    {
+        DocumentChanges oDocument = oServiceUtil.GetDocument(oDocumentSet.DocumentEntries[0].Document.Name);
+        if (oDocument != null)
+        {
+            axAcroPDF1.src = oDocument.Identifier.ToString();
+        }
+    }
+}
+```
+#### **API**
+```C#
+public DocumentSetChanges GetDocumentSet(string DocumentSetName, bool IgnoreException = true)
+```
+### 5. GetWorkflow
 This function is used for Get the details Workflow from certain String Workflow name
 #### **Usage example**
 ```C#
@@ -179,7 +228,7 @@ WorkflowChanges oWorkflow = GetWorkflow("Name Workflow");
 ```C#
 WorkflowChanges GetWorkflow(string WorkflowName, string WorkflowRevision = "", bool IgnoreException = true)
 ```
-### 3. GetERPRouteFromMfgOrder
+### 6. GetERPRouteFromMfgOrder
 This function is used for Get ERP Route from certain string Mfg Order name
 #### **Usage example**
 ```C#
@@ -190,7 +239,7 @@ ERPRouteChanges oERPRoute = oServiceUtil.GetERPRouteFromMfgOrder("Name Mfg Order
 ```C#
 ERPRouteChanges GetERPRouteFromMfgOrder(MfgOrderChanges oMfgOrder, bool IgnoreException = true)
 ```
-### 4. GetERPRoute
+### 7. GetERPRoute
 This function is used for Get the details ERP Route from certain String ERP Route name
 #### **Usage example**
 ```C#
@@ -201,7 +250,7 @@ ERPRouteChanges oERPRoute = GetERPRoute("ERP Route Name");
 ```C#
 ERPRouteChanges GetERPRoute(string ERPRouteName, string ERPRouteRevision = "", bool IgnoreException = true)
 ```
-### 5. GetMfgOrder
+### 8. GetMfgOrder
 This function is used for Get the details Mfg Order from certain String Mfg Order name
 #### **Usage example**
 ```C#
@@ -211,7 +260,7 @@ MfgOrderChanges getMfgOrder = oServiceUtil.GetMfgOrder("Mfg Order Name");
 ```C#
 MfgOrderChanges GetMfgOrder(string MfgOrderName, bool IgnoreException = true)
 ```
-### 6. GetListMfgOrder
+### 9. GetListMfgOrder
 This function is used for Get all the list of Mfg Order
 #### **Usage example**
 ```C#
@@ -222,7 +271,7 @@ List<MfgOrderChanges> oMfgList = new List<MfgOrderChanges>();
 ```C#
 NamedObjectRef[] GetListMfgOrder(bool IgnoreException = true)
 ```
-### 7. SaveMfgOrder
+### 10. SaveMfgOrder
 This function is used for Save a Mfg Order with several parameters
 #### **Usage example**
 ```C#
@@ -233,7 +282,7 @@ bool result = oServiceUtil.SaveMfgOrder("Mfg Order Name", "", "", "Product Name"
 ```C#
 bool SaveMfgOrder(string Name, string Description = "", string Notes = "", string ProductName = "", string ProductRevision = "", string WorkflowName = "", string WorkflowRevision = "", double Qty = 0, List<dynamic> MaterialList = null, string ERPRoute = "", string PlannedStartDate = "", string PlannedCompletedDate = "", string ReleaseDate = "", string OrderStatus = "", bool AutoCreateQueue = false, bool IgnoreException = true)
 ```
-### 8. SaveProduct
+### 11. SaveProduct
 This function for save a Product with several parameters
 #### **Usage example**
 ```C#
@@ -244,7 +293,7 @@ bool result = oServiceUtil.SaveProduct("70704543", "1", "", "This is a product d
 ```C#
 bool SaveProduct(string ProductName, string Revision, string IsRevOfRcd = "", string Description = "", string Notes = "", string ProductType = "", string DocumentSet = "", string WorkflowName = "", string WorkflowRevision = "", string BOMName = "", string BOMRevision = "", bool IgnoreException = true)
 ```
-### 9. SaveManageQueue
+### 12. SaveManageQueue
 This function is used for save some material into certain queue, the list material is used `List<dynamic>`
 #### **Usage example**
 ```C#
@@ -256,7 +305,7 @@ resultQueue = oServiceUtil.SaveManageQueue("Name Queue", "Name Mfg Order", cMate
 ```C#
 bool SaveManageQueue(string oQueue, string oMfgOrder = "", List<dynamic> MaterialQueueDetails = null, bool isActive = true, bool IgnoreException = true)
 ```
-### 10. SaveManageInventory
+### 13. SaveManageInventory
 This function is used for save single material into certain queue
 #### **Usage example**
 ```C#
@@ -511,6 +560,16 @@ if (oServiceUtil.ExecuteResourceThruput("BW01-NM1-LS", 1, "unit", "0310103600"))
 #### **API**
 ```C#
 bool ExecuteResourceThruput(string ResourceName, double Qty = 0, string UOM = "", string ProductName = "", string ProductRevision = "", string Comments = "", string EmployeeName = "", string TxnDate = "", bool IgnoreException = true)
+```
+### 9. GetResource 
+This function is used to get the details of Resource
+#### **Usage example**
+```C#
+ResourceChanges oResource = oServiceUtil.GetResource("Name of Resource");
+```
+#### **API**
+```C#
+public ResourceChanges GetResource(string ResourceName, bool IgnoreException = true)
 ```
 
 ## TEAM TRACKING TXN FUNCTION

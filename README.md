@@ -88,9 +88,11 @@ Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\EventLog\Security
 # Released Notes
 - [Released v1.0.0](https://github.com/ZulfikarOpexcg/OpcenterWikLibraryReleased/releases/tag/v1.0.0) 
 - [Released v1.0.1](https://github.com/ZulfikarOpexcg/OpcenterWikLibraryReleased/releases/tag/v1.0.1)  
-    - Fixing Security on ExCoreProfile
+    - Fixing Security issued ExCoreProfile
     - Add `UNCFolderPath` Class, there's two method, `Connect()` and `Disconnect()`
-    - Remove Order and Order BOM AppSettings
+- [Released v1.0.2](https://github.com/ZulfikarOpexcg/OpcenterWikLibraryReleased/releases/tag/v1.0.2)  
+    - Update the Mfg Order
+    - Add isImageChanges, DocumentChanges, DocumentSetChanges, MfgOrderChanges, ResourceChanges  
 
 # License & Copy Right
 © M. Zulfikar Isnaen [MIT License](LICENSE).
