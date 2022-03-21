@@ -449,6 +449,27 @@ if (oCurrentContainerStatus != null)
 CurrentContainerStatus GetContainerStatusDetails(string ContainerName, string DataCollectionName = "", string DataCollectionRev = "", bool IgnoreException = true)
 ```
 
+### 9. ExecuteContainerAttrMaint
+This function is used to store data and attach container, this value will move alongside with the container.
+#### **Usage example**
+```C#
+ServiceUtil oServiceUtil = new ServiceUtil();
+Camstar.WCF.ObjectStack.ContainerAttrDetail[] cDataAttr = new Camstar.WCF.ObjectStack.ContainerAttrDetail[2];
+cDataAttr[0] = new Camstar.WCF.ObjectStack.ContainerAttrDetail() { Name = "Repair", DataType = Camstar.WCF.ObjectStack.TrivialTypeEnum.Integer, AttributeValue = "2", IsExpression = false };
+cDataAttr[1] = new Camstar.WCF.ObjectStack.ContainerAttrDetail() { Name = "Testing", DataType = Camstar.WCF.ObjectStack.TrivialTypeEnum.Integer, AttributeValue = "100", IsExpression = false };
+bool attrResult = oServiceUtil.ExecuteContainerAttrMaint("CoffeMachine-2", cDataAttr);
+if (attrResult)
+{
+    MessageBox.Show("Execution Attribute Container Success");
+} else {
+    MessageBox.Show("Execution Attribute Container Failed");
+}
+```
+#### **API**
+```C#
+bool ExecuteContainerAttrMaint(string ContainerName, ContainerAttrDetail[] Attributes, string Comments = "", string EmployeeName = "", string TxnDateStr = "", bool IgnoreException = true)
+```
+
 ## RESOURCE TXN FUNCTION
 ### 1. GetResourceStatusReasonGroup
 This function is used to get the ResourceReasonGroup from Name of Resource Group, or we can get the name from Status Code Reason Group
