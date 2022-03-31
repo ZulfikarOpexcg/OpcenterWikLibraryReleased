@@ -271,7 +271,48 @@ List<MfgOrderChanges> oMfgList = new List<MfgOrderChanges>();
 ```C#
 NamedObjectRef[] GetListMfgOrder(bool IgnoreException = true)
 ```
-### 10. SaveMfgOrder
+### 10. GetFinishGoodRecord
+This function is used for Getting all the record Container within the Mfg Order. And this function must be used Asynchronous method, otherwise will freeze your application.
+#### **Usage example**
+```C#
+private Task<CurrentContainerStatus[]> hasil = null;
+
+private string[] listDataCollectionName = new string[] { "Laser Marking Minime", "Pump & PCBA Assy Minime", "HI-POT Minime", "FCT Minime", "Visual Checking Minime", "Backend Minime", "Laser Marking Ariel", "Pump & PCBA Assy Ariel", "HI-POT Ariel", "FCT Ariel", "Visual Checking Ariel", "Backend Ariel" };
+
+private async Task<CurrentContainerStatus[]> myFunc()
+{
+    ServiceUtil oServiceUtil = new ServiceUtil();
+    var myTask = Task.Run(() => oServiceUtil.GetFinishGoodRecord("1936129", listDataCollectionName));
+    return await myTask;
+}
+
+private void Yours_Event_Click(object sender, EventArgs e)
+{
+    this.hasil = myFunc();
+}
+```
+#### **API**
+```C#
+CurrentContainerStatus[] GetFinishGoodRecord(string MfgOrderName, string[] listDataCollectionName, bool IgnoreException = true)
+```
+### 11. GetCounterFromMfgOrder
+This function is used for counting the unit for specific resource (Unit Counter), and the return is integer.
+#### **Usage example**
+```C#
+ServiceUtil oServiceUtil = new ServiceUtil();
+Camstar.WCF.ObjectStack.wikResourceCounterChanges[] cResourceCounter = new wikResourceCounterChanges[1];
+cResourceCounter[0] = new Camstar.WCF.ObjectStack.wikResourceCounterChanges() { Resource = new NamedObjectRef("BW01-NM1-LS"), wikCounterUnit = 1 };
+bool result = oServiceUtil.SaveMfgOrder("1936129", "", "", "", "", "", "", 0, null, "", "", "", "", "", cResourceCounter);
+if (result)
+{
+    MessageBox.Show("Success updated!" + " The Total is: " + oServiceUtil.GetCounterFromMfgOrder("1936129", "BW01-NM1-LS"));
+}
+```
+#### **API**
+```C#
+int GetCounterFromMfgOrder(string MfgOrderName, string ResourceName, bool IgnoreException = true)
+```
+### 12. SaveMfgOrder
 This function is used for Save a Mfg Order with several parameters
 #### **Usage example**
 ```C#
@@ -282,7 +323,7 @@ bool result = oServiceUtil.SaveMfgOrder("Mfg Order Name", "", "", "Product Name"
 ```C#
 bool SaveMfgOrder(string Name, string Description = "", string Notes = "", string ProductName = "", string ProductRevision = "", string WorkflowName = "", string WorkflowRevision = "", double Qty = 0, List<dynamic> MaterialList = null, string ERPRoute = "", string PlannedStartDate = "", string PlannedCompletedDate = "", string ReleaseDate = "", string OrderStatus = "", bool AutoCreateQueue = false, bool IgnoreException = true)
 ```
-### 11. SaveProduct
+### 13. SaveProduct
 This function for save a Product with several parameters
 #### **Usage example**
 ```C#
@@ -293,7 +334,7 @@ bool result = oServiceUtil.SaveProduct("70704543", "1", "", "This is a product d
 ```C#
 bool SaveProduct(string ProductName, string Revision, string IsRevOfRcd = "", string Description = "", string Notes = "", string ProductType = "", string DocumentSet = "", string WorkflowName = "", string WorkflowRevision = "", string BOMName = "", string BOMRevision = "", bool IgnoreException = true)
 ```
-### 12. SaveManageQueue
+### 14. SaveManageQueue
 This function is used for save some material into certain queue, the list material is used `List<dynamic>`
 #### **Usage example**
 ```C#
@@ -305,7 +346,7 @@ resultQueue = oServiceUtil.SaveManageQueue("Name Queue", "Name Mfg Order", cMate
 ```C#
 bool SaveManageQueue(string oQueue, string oMfgOrder = "", List<dynamic> MaterialQueueDetails = null, bool isActive = true, bool IgnoreException = true)
 ```
-### 13. SaveManageInventory
+### 15. SaveManageInventory
 This function is used for save single material into certain queue
 #### **Usage example**
 ```C#
