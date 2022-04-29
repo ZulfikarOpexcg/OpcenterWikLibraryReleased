@@ -305,7 +305,8 @@ cResourceCounter[0] = new Camstar.WCF.ObjectStack.wikResourceCounterChanges() { 
 bool result = oServiceUtil.SaveMfgOrder("1936129", "", "", "", "", "", "", 0, null, "", "", "", "", "", cResourceCounter);
 if (result)
 {
-    MessageBox.Show("Success updated!" + " The Total is: " + oServiceUtil.GetCounterFromMfgOrder("1936129", "BW01-NM1-LS"));
+    MfgOrderChanges getMfgOrder = oServiceUtil.GetMfgOrder("1936129");
+    MessageBox.Show("Success updated!" + " The Total is: " + oServiceUtil.GetCounterFromMfgOrder(getMfgOrder, "BW01-NM1-LS"));
 }
 ```
 #### **API**
@@ -317,11 +318,11 @@ This function is used for Save a Mfg Order with several parameters
 #### **Usage example**
 ```C#
 ServiceUtil oServiceUtil = new ServiceUtil();
-bool result = oServiceUtil.SaveMfgOrder("Mfg Order Name", "", "", "Product Name", "", "", "", 1000, null, "", oServiceUtil.IsDate("20/01/2021") == true ? "20/01/2021" : "", oServiceUtil.IsDate("20/02/2021") == true ? "20/02/2021" : "", "", "Released", true);
+bool result = oServiceUtil.SaveMfgOrder("Mfg Order Name", "", "", "Product Name", "", "", "", 1000, null, "", oServiceUtil.IsDate("20/01/2021") == true ? "20/01/2021" : "", oServiceUtil.IsDate("20/02/2021") == true ? "20/02/2021" : "", "", "Released", null, "", "", true);
 ```
 #### **API**
 ```C#
-bool SaveMfgOrder(string Name, string Description = "", string Notes = "", string ProductName = "", string ProductRevision = "", string WorkflowName = "", string WorkflowRevision = "", double Qty = 0, List<dynamic> MaterialList = null, string ERPRoute = "", string PlannedStartDate = "", string PlannedCompletedDate = "", string ReleaseDate = "", string OrderStatus = "", bool AutoCreateQueue = false, bool IgnoreException = true)
+public bool SaveMfgOrder(string Name, string Description = "", string Notes = "", string ProductName = "", string ProductRevision = "", string WorkflowName = "", string WorkflowRevision = "", double Qty = 0, List<dynamic> MaterialList = null, string ERPRoute = "", string PlannedStartDate = "", string PlannedCompletedDate = "", string ReleaseDate = "", string OrderStatus = "", wikResourceCounterChanges[] wikListResourceCounter = null, string OrderType = "", string MfgLine = "", bool AutoCreateQueue = false, bool IgnoreException = true)
 ```
 ### 13. SaveProduct
 This function for save a Product with several parameters
