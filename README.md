@@ -95,8 +95,13 @@ Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\EventLog\Security
     - Add isImageChanges, DocumentChanges, DocumentSetChanges, MfgOrderChanges, ResourceChanges  
 - [Released v1.0.3](https://github.com/ZulfikarOpexcg/OpcenterWikLibraryReleased/releases/tag/v1.0.3)  
     - **ExecuteContainerAttrMaint** = This function is used to store data and attach container, this value will move alongside with the container.
-- [Released v1.0.4](https://github.com/ZulfikarOpexcg/OpcenterWikLibraryReleased/releases/tag/v1.0.4)
-    - **GetFinishGoodRecord** = This function is used for Getting all the record Container within the Mfg Order. And this function must be used Asynchronous method, otherwise will freeze your application.
-    - **GetCounterFromMfgOrder** = This function is used for counting the unit for specific resource (Unit Counter), and the return is integer.
+- [Released v1.0.5](https://github.com/ZulfikarOpexcg/OpcenterWikLibraryReleased/releases/tag/v1.0.5)
+    - **SaveProductType** = This function is used for save product Type.
+    - **SaveProductFamily** = This function is used for save product Family.
+    - **SaveUOM** = This function is used for save UOM.
+    - Update Product Field on SaveProduct.
+    - Add Material list "Scanning".
+    - Add Queue Folder Config (For asynchronous Windows Services).
+    - Fixing UNCPath if the value is blank.
 # License & Copy Right
 © M. Zulfikar Isnaen [MIT License](LICENSE).

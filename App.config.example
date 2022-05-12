@@ -1,45 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <configuration>
 	<startup>
-		<supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.7.2" />
+		<supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.7.2"/>
 	</startup>
 	<appSettings>
 		<!-- Timer Polling Interval -->
 		<add key="TimerPollingInterval" value="1000"/>
 
 		<!-- ExCore Connection Settings -->
-		<add key="UTCOffset" value="07:00:00" />
-		<add key="ExCoreHost" value="EXCR86MIO40" />
-		<add key="ExCorePort" value="443" />
-		<add key="ExCoreUsername" value="Administrator" />
-		<add key="ExCorePasswordkey" value="ExCoreKey" />
-		<add key="ExCorePassword" value="uFlZ/eG69mA5BooouzUciIy1Cyrgzdnp" />
+		<add key="UTCOffset" value="07:00:00"/>
+		<add key="ExCoreHost" value="EXCR86MIO40"/>
+		<add key="ExCorePort" value="443"/>
+		<add key="ExCoreUsername" value="Administrator"/>
+		<add key="ExCorePasswordkey" value="ExCoreKey"/>
+		<add key="ExCorePassword" value="uFlZ/eG69mA5BooouzUciIy1Cyrgzdnp"/>
 
 		<!-- Trace Level setting (higher level includes lower levels). -->
-		<add key="TraceLevel" value="6" />
+		<add key="TraceLevel" value="6"/>
 
 		<!-- File Processing Folders -->
 		<add key="SourceUNCPath" value=""/>
 		<add key="SourceUNCPathUsername" value=""/>
 		<add key="SourceUNCPathPassword" value=""/>
-		<add key="SourceFolder" value="C:\Temp\ExCoreService\SourceFiles" />
+		<add key="SourceFolder" value="C:\Temp\ExCoreService\SourceFiles"/>
 
 		<add key="CompletedUNCPath" value=""/>
 		<add key="CompletedUNCPathUsername" value=""/>
 		<add key="CompletedUNCPathPassword" value=""/>
-		<add key="CompletedFolder" value="C:\Temp\ExCoreService\CompletedFiles" />
+		<add key="CompletedFolder" value="C:\Temp\ExCoreService\CompletedFiles"/>
 
 		<add key="ErrorUNCPath" value=""/>
 		<add key="ErrorUNCPathUsername" value=""/>
 		<add key="ErrorUNCPathPassword" value=""/>
-		<add key="ErrorFolder" value="C:\Temp\ExCoreService\ErrorFiles" />
+		<add key="ErrorFolder" value="C:\Temp\ExCoreService\ErrorFiles"/>
+
+		<add key="QueueUNCPathUsername" value=""/>
+		<add key="QueueUNCPath" value=""/>
+		<add key="QueueUNCPathPassword" value=""/>
+		<add key="QueueFolder" value="C:\Temp\ExCoreService\QueueFiles"/>
+
+		<!-- File Processing Folders -->
+		<add key="ReferenceUNCPath" value=""/>
+		<add key="ReferenceUNCPathUsername" value=""/>
+		<add key="ReferenceUNCPathPassword" value=""/>
+		<add key="ReferenceFolder" value="C:\Temp\ExCoreService\SourceFiles"/>
 
 		<add key="Resource" value="BW01-NM1-LS"/>
 		<add key="Line" value="BW01-NM1"/>
 
-		<add key ="DefaultUOM" value="Unit"/>
-		<add key ="DefaultInventoryLocation" value="Warehouse"/>
-		<add key ="DefaultOrderStatus" value="Released"/>
+		<add key="DefaultUOM" value="Unit"/>
+		<add key="DefaultInventoryLocation" value="Warehouse"/>
+		<add key="DefaultOrderStatus" value="Released"/>
 	</appSettings>
 	<system.serviceModel>
 		<protocolMapping>
@@ -99,31 +110,31 @@
 		<serviceHostingEnvironment aspNetCompatibilityEnabled="true" multipleSiteBindingsEnabled="true"></serviceHostingEnvironment>
 		<services>
 			<service behaviorConfiguration="DefaultBehaviorSSL" name="WebClientPortal.SilverlightRoutingService">
-				<endpoint address="" binding="basicHttpBinding" bindingConfiguration="DefaultBindingSSL" contract="System.ServiceModel.Routing.IRequestReplyRouter" />
-				<endpoint address="mex" binding="mexHttpsBinding" contract="IMetadataExchange" />
+				<endpoint address="" binding="basicHttpBinding" bindingConfiguration="DefaultBindingSSL" contract="System.ServiceModel.Routing.IRequestReplyRouter"/>
+				<endpoint address="mex" binding="mexHttpsBinding" contract="IMetadataExchange"/>
 			</service>
 			<service behaviorConfiguration="DefaultBehaviorSSL" name="WebClientPortal.PortalStudioService">
-				<endpoint address="" binding="basicHttpBinding" bindingConfiguration="DefaultBindingSSL" contract="WebClientPortal.PortalStudioService" />
-				<endpoint address="web" behaviorConfiguration="webBehavior" binding="webHttpBinding" bindingConfiguration="DefaultBindingSSL" contract="WebClientPortal.PortalStudioService" />
-				<endpoint address="mex" binding="mexHttpsBinding" contract="IMetadataExchange" />
+				<endpoint address="" binding="basicHttpBinding" bindingConfiguration="DefaultBindingSSL" contract="WebClientPortal.PortalStudioService"/>
+				<endpoint address="web" behaviorConfiguration="webBehavior" binding="webHttpBinding" bindingConfiguration="DefaultBindingSSL" contract="WebClientPortal.PortalStudioService"/>
+				<endpoint address="mex" binding="mexHttpsBinding" contract="IMetadataExchange"/>
 			</service>
 			<service behaviorConfiguration="DefaultBehaviorSSL" name="WebClientPortal.ApolloPortalService">
-				<endpoint address="" binding="basicHttpBinding" bindingConfiguration="DefaultBindingSSL" contract="WebClientPortal.ApolloPortalService" />
-				<endpoint address="web" behaviorConfiguration="webBehavior" binding="webHttpBinding" bindingConfiguration="DefaultBindingSSL" contract="WebClientPortal.ApolloPortalService" />
-				<endpoint address="mex" binding="mexHttpsBinding" contract="IMetadataExchange" />
+				<endpoint address="" binding="basicHttpBinding" bindingConfiguration="DefaultBindingSSL" contract="WebClientPortal.ApolloPortalService"/>
+				<endpoint address="web" behaviorConfiguration="webBehavior" binding="webHttpBinding" bindingConfiguration="DefaultBindingSSL" contract="WebClientPortal.ApolloPortalService"/>
+				<endpoint address="mex" binding="mexHttpsBinding" contract="IMetadataExchange"/>
 			</service>
 			<service behaviorConfiguration="DefaultBehaviorSSL" name="WebClientPortal.SmartScanService">
-				<endpoint address="" binding="basicHttpBinding" bindingConfiguration="DefaultBindingSSL" contract="WebClientPortal.SmartScanService" />
-				<endpoint address="web" behaviorConfiguration="webBehavior" binding="webHttpBinding" bindingConfiguration="DefaultBindingSSL" contract="WebClientPortal.SmartScanService" />
-				<endpoint address="mex" binding="mexHttpsBinding" contract="IMetadataExchange" />
+				<endpoint address="" binding="basicHttpBinding" bindingConfiguration="DefaultBindingSSL" contract="WebClientPortal.SmartScanService"/>
+				<endpoint address="web" behaviorConfiguration="webBehavior" binding="webHttpBinding" bindingConfiguration="DefaultBindingSSL" contract="WebClientPortal.SmartScanService"/>
+				<endpoint address="mex" binding="mexHttpsBinding" contract="IMetadataExchange"/>
 			</service>
 		</services>
 	</system.serviceModel>
 	<runtime>
 		<assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
 			<dependentAssembly>
-				<assemblyIdentity name="System.Runtime.CompilerServices.Unsafe" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
-				<bindingRedirect oldVersion="0.0.0.0-4.0.4.1" newVersion="4.0.4.1" />
+				<assemblyIdentity name="System.Runtime.CompilerServices.Unsafe" publicKeyToken="b03f5f7f11d50a3a" culture="neutral"/>
+				<bindingRedirect oldVersion="0.0.0.0-4.0.4.1" newVersion="4.0.4.1"/>
 			</dependentAssembly>
 		</assemblyBinding>
 	</runtime>

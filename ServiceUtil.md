@@ -333,7 +333,7 @@ bool result = oServiceUtil.SaveProduct("70704543", "1", "", "This is a product d
 ```
 #### **API**
 ```C#
-bool SaveProduct(string ProductName, string Revision, string IsRevOfRcd = "", string Description = "", string Notes = "", string ProductType = "", string DocumentSet = "", string WorkflowName = "", string WorkflowRevision = "", string BOMName = "", string BOMRevision = "", bool IgnoreException = true)
+bool SaveProduct(string ProductName, string Revision, string IsRevOfRcd = "", string Description = "", string Notes = "", string ProductType = "", string DocumentSet = "", string WorkflowName = "", string WorkflowRevision = "", string BOMName = "", string BOMRevision = "", string ProductFamily = "", string Procurement = "", string StartUOM = "", double StartQty = 0, bool IgnoreException = true)
 ```
 ### 14. SaveManageQueue
 This function is used for save some material into certain queue, the list material is used `List<dynamic>`
@@ -360,6 +360,50 @@ if (oServiceUtil.SaveManageInventory("Mfg Order 1", "Default", "0310103600", "03
 #### **API**
 ```C#
 bool SaveManageInventory(string NameMaterialQueue, string ManageInventory, string ProductNumber, string BatchNumber = "", double Qty = 0, string UOM = "", bool IgnoreException = true)
+```
+### 16. SaveProductType
+This function is used for save product Type
+#### **Usage example**
+```C#
+ServiceUtil oServiceUtil = new ServiceUtil();
+if (oServiceUtil.SaveProductType("Finish Good", "This is Type Finish Good"))
+{
+    MessageBox.Show(oServiceUtil.LastResultMessage);
+}
+```
+#### **API**
+```C#
+bool SaveProductType(string Name, string Description = "", bool IgnoreException = true)
+```
+
+### 17. SaveProductFamily
+This function is used for save product Family
+#### **Usage example**
+```C#
+ServiceUtil oServiceUtil = new ServiceUtil();
+if (oServiceUtil.SaveProductFamily("135", "PCB Assy"))
+{
+    MessageBox.Show(oServiceUtil.LastResultMessage);
+}
+```
+#### **API**
+```C#
+bool SaveProductFamily(string Name, string Description = "", string WorkflowName = "", string WorkflowRevision = "", string DocumentSet = "", string ContainerNumberingRule = "", bool IgnoreException = true)
+```
+
+### 18. SaveUOM
+This function is used for save UOM
+#### **Usage example**
+```C#
+ServiceUtil oServiceUtil = new ServiceUtil();
+if (oServiceUtil.SaveUOM("EA", "Each"))
+{
+    MessageBox.Show(oServiceUtil.LastResultMessage);
+}
+```
+#### **API**
+```C#
+bool SaveUOM(string Name, string Description = "", bool IgnoreException = true)
 ```
 
 ## CONTAINER TXN FUNCTION
