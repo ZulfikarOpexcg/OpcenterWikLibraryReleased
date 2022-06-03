@@ -1,9 +1,12 @@
 # Service Util **API**
 
 ## REUSABLE FUNCTION
-### 1. ProcessResult
+
+<details>
+<summary><b>1. ProcessResult</b></summary>
 This function is used for check the Result of ServiceTransaction MES success or not, this function will return boolean (success/not success) and return string text.
-#### **Usage example**
+
+**Usage example**
 ```C#
 string sMessage = "";
 MoveInService oService = null;
@@ -14,15 +17,17 @@ oServiceObject = new MoveIn() { Container = new ContainerRef(ContainerName) };
 oResultStatus = oService.ExecuteTransaction(oServiceObject);
 bool statusMoveIn = ProcessResult(oResultStatus, ref sMessage, false);
 ```
-
-### **API**
+**API**
 ```C#
 bool ProcessResult(ResultStatus Result, ref string ResultMessage, bool IgnoreException = true)
 ```
+</details>
 
-### 2. ObjectExists
+<details>
+<summary><b>2. ObjectExists</b></summary>
 This function is usedfor check whether certain object is exists or not
-#### **Usage example**
+
+**Usage example**
 ```C#
 MfgOrderMaintService oService = null;
 MfgOrderMaint oServiceObject = null;
@@ -38,16 +43,17 @@ if (bObjectExists)
     oService.Load(oServiceObject);
 }
 ```
-
-#### **API**
+**API**
 ```C#
 bool ObjectExists(dynamic ServiceRef, dynamic ServiceObject, string Name)
 ```
+</details>
 
-### 3. ObjectExists(revision)
-
-#### **Usage example**
+<details>
+<summary><b>3. ObjectExists(revision)</b></summary>
 This function is usedfor check whether certain object revision is exists or not
+
+**Usage example**
 ```C#
 ProductMaintService oService = null;
 ProductMaint oServiceObject = null;
@@ -63,16 +69,17 @@ if (bObjectExists)
     oService.Load(oServiceObject);
 }
 ```
-
-#### **API**
+**API**
 ```C#
 bool ObjectExists(dynamic ServiceRef, dynamic ServiceObject, string Name, string Revision)
 ```
+</details>
 
-### 4. GetDataPointSummaryRef
+<details>
+<summary><b>4. GetDataPointSummaryRef</b></summary>
 This function is used for get the objects of the DataCollection, so if we don't know the name of Data Collection, we can used this function to get automatically the DataCollectionDef Object Automatically.
 
-#### **Usage example**
+**Usage example**
 ```C#
 string DataCollectionName = "";
 string DataCollectionRev = "";
@@ -81,15 +88,17 @@ MoveIn oServiceObject = null;
 oService = new MoveInService(AppSettings.ExCoreUserProfile);
 DataPointSummary oDataPointSummaryRef = GetDataPointSummaryRef(oService, oServiceObject, new MoveIn_Request(), new MoveIn_Info(), ref DataCollectionName, ref DataCollectionRev);
 ```
-
-#### **API**
+**API**
 ```C#
 DataPointSummary GetDataPointSummaryRef(dynamic Service, dynamic ServiceObject, dynamic ServiceObject_Request, dynamic ServiceObject_Info, ref string DataCollectionName, ref string DataCollectionRev)
 ```
+</details>
 
-### 5. SetDataPointSummary(DataPointSummaryRef)
+<details>
+<summary><b>5. SetDataPointSummary(DataPointSummaryRef)</b></summary>
 This function for set the object data collection, this function commonly is combined with GetDataPointSummaryRef
-#### **Usage example**
+
+**Usage example**
 ```C#
 string DataCollectionName = "";
 string DataCollectionRev = "";
@@ -99,15 +108,17 @@ oService = new MoveInService(AppSettings.ExCoreUserProfile);
 DataPointSummary oDataPointSummaryRef = GetDataPointSummaryRef(oService, oServiceObject, new MoveIn_Request(), new MoveIn_Info(), ref DataCollectionName, ref DataCollectionRev);
 oServiceObject.ParametricData = SetDataPointSummary(oDataPointSummaryRef, DataPoints);
 ```
-
-#### **API**
+**API**
 ```C#
 DataPointSummary SetDataPointSummary(DataPointSummary DataPointSummaryRef, DataPointDetails[] DataPoints)
 ```
+</details>
 
-### 6. SetDataPointSummary( DataPointCollectionRef)
+<details>
+<summary><b>6. SetDataPointSummary( DataPointCollectionRef)</b></summary>
 This function for set the object data collection
-#### **Usage example**
+
+**Usage example**
 ```C#
 string DataCollectionName = "";
 string DataCollectionRev = "";
@@ -117,28 +128,32 @@ oService = new MoveInService(AppSettings.ExCoreUserProfile);
 oServiceObject.DataCollectionDef = new RevisionedObjectRef() { Name = DataCollectionName, Revision = DataCollectionRev, RevisionOfRecord = (DataCollectionRev == "") };
 oServiceObject.ParametricData = SetDataPointSummary(oServiceObject.DataCollectionDef, DataPoints);
 ```
-
-#### **API**
+**API**
 ```C#
 DataPointSummary SetDataPointSummary(object DataCollectionRef, DataPointDetails[] DataPoints)
 ```
+</details>
 
-### 7. IsDate
+<details>
+<summary><b>7. IsDate</b></summary>
 This function for set the object data collection
-#### **Usage example**
+
+**Usage example**
 ```C#
 ServiceUtil oServiceUtil = new ServiceUtil();
 bool result = oServiceUtil.IsDate("05/29/2015 05:50 AM");
 ```
-
-#### **API**
+**API**
 ```C#
 bool IsDate(string input)
 ```
+</details>
 
-### 8. CanConvertTo
+<details>
+<summary><b>8. CanConvertTo</b></summary>
 This function for check whether the String can convert to double or not
-#### **Usage example**
+
+**Usage example**
 ```C#
 ServiceUtil oServiceUtil = new ServiceUtil();
 if (oServiceUtil.CanCovertTo("3", "System.Double"))
@@ -150,27 +165,35 @@ else
     MessageBox.Show("Can't!");
 }
 ```
-
-#### **API**
+**API**
 ```C#
 bool CanCovertTo(string testString, string testType)
 ```
+</details>
+
 
 ## MAINTENANCE FUNCTION
-### 1. GetProduct
+
+<details>
+<summary><b>1. GetProduct</b></summary>
 This function is used for Get the details product from certain String product name
-#### **Usage example**
+
+**Usage example**
 ```C#
 ServiceUtil oServiceUtil = new ServiceUtil();
 ProductChanges oProduct = GetProduct("Name Product");
 ```
-#### **API**
+**API**
 ```C#
 ProductChanges GetProduct(string ProductName, string ProductRevision = "", bool IgnoreException = true)
 ```
-### 2. GetImage
+</details>
+
+<details>
+<summary><b>2. GetImage</b></summary>
 This function is used when we want to getting the Details of Image that available on MES Opcenter
-#### **Usage example**
+
+**Usage example**
 ```C#
 isImageChanges oImage = oServiceUtil.GetImage('Name of Document');
 if (oImage != null)
@@ -178,13 +201,17 @@ if (oImage != null)
     pictureBox1.Load(oImage.Identifier.ToString());
 }
 ```
-#### **API**
+**API**
 ```C#
 public isImageChanges GetImage(string Image, string ImageRevision = "", bool IgnoreException = true)
 ```
-### 3. DocumentChanges
+</details>
+
+<details>
+<summary><b>3. DocumentChanges</b></summary>
 This function is used to get the details of Document
-#### **Usage example**
+
+**Usage example**
 ```C#
 DocumentChanges oDocument = oServiceUtil.GetDocument('Name of Document');
 if (oDocument != null)
@@ -192,13 +219,17 @@ if (oDocument != null)
     axAcroPDF1.src = oDocument.Identifier.ToString();
 }
 ```
-#### **API**
+**API**
 ```C#
 public DocumentChanges GetDocument(string Document, string DocumentRevision = "", bool IgnoreException = true)
 ```
-### 4. DocumentSetChanges
+</details>
+
+<details>
+<summary><b>4. DocumentSetChanges</b></summary>
 This function is used to get the details of Document set, document set is collection of document
-#### **Usage example**
+
+**Usage example**
 ```C#
 DocumentSetChanges oDocumentSet = oServiceUtil.GetDocumentSet("Name of Document Set");
 if (oDocumentSet != null)
@@ -213,67 +244,91 @@ if (oDocumentSet != null)
     }
 }
 ```
-#### **API**
+**API**
 ```C#
 public DocumentSetChanges GetDocumentSet(string DocumentSetName, bool IgnoreException = true)
 ```
-### 5. GetWorkflow
+</details>
+
+<details>
+<summary><b>5. GetWorkflow</b></summary>
 This function is used for Get the details Workflow from certain String Workflow name
-#### **Usage example**
+
+**Usage example**
 ```C#
 ServiceUtil oServiceUtil = new ServiceUtil();
 WorkflowChanges oWorkflow = GetWorkflow("Name Workflow");
 ```
-#### **API**
+**API**
 ```C#
 WorkflowChanges GetWorkflow(string WorkflowName, string WorkflowRevision = "", bool IgnoreException = true)
 ```
-### 6. GetERPRouteFromMfgOrder
+</details>
+
+<details>
+<summary><b>6. GetERPRouteFromMfgOrder</b></summary>
 This function is used for Get ERP Route from certain string Mfg Order name
-#### **Usage example**
+
+**Usage example**
 ```C#
 ServiceUtil oServiceUtil = new ServiceUtil();
 ERPRouteChanges oERPRoute = oServiceUtil.GetERPRouteFromMfgOrder("Name Mfg Order");
 ```
-#### **API**
+**API**
 ```C#
 ERPRouteChanges GetERPRouteFromMfgOrder(MfgOrderChanges oMfgOrder, bool IgnoreException = true)
 ```
-### 7. GetERPRoute
+</details>
+
+<details>
+<summary><b>7. GetERPRoute</b></summary>
 This function is used for Get the details ERP Route from certain String ERP Route name
-#### **Usage example**
+
+**Usage example**
 ```C#
 ServiceUtil oServiceUtil = new ServiceUtil();
 ERPRouteChanges oERPRoute = GetERPRoute("ERP Route Name");
 ```
-#### **API**
+**API**
 ```C#
 ERPRouteChanges GetERPRoute(string ERPRouteName, string ERPRouteRevision = "", bool IgnoreException = true)
 ```
-### 8. GetMfgOrder
+</details>
+
+<details>
+<summary><b>8. GetMfgOrder</b></summary>
 This function is used for Get the details Mfg Order from certain String Mfg Order name
-#### **Usage example**
+
+**Usage example**
 ```C#
 MfgOrderChanges getMfgOrder = oServiceUtil.GetMfgOrder("Mfg Order Name");
 ```
-#### **API**
+**API**
 ```C#
 MfgOrderChanges GetMfgOrder(string MfgOrderName, bool IgnoreException = true)
 ```
-### 9. GetListMfgOrder
+</details>
+
+<details>
+<summary><b>9. GetListMfgOrder</b></summary>
 This function is used for Get all the list of Mfg Order
-#### **Usage example**
+
+**Usage example**
 ```C#
 ServiceUtil oServiceUtil = new ServiceUtil();
 List<MfgOrderChanges> oMfgList = new List<MfgOrderChanges>();
 ```
-#### **API**
+**API**
 ```C#
 NamedObjectRef[] GetListMfgOrder(bool IgnoreException = true)
 ```
-### 10. GetFinishGoodRecord
+</details>
+
+<details>
+<summary><b>10. GetFinishGoodRecord</b></summary>
 This function is used for Getting all the record Container within the Mfg Order. And this function must be used Asynchronous method, otherwise will freeze your application.
-#### **Usage example**
+
+**Usage example**
 ```C#
 private Task<CurrentContainerStatus[]> hasil = null;
 
@@ -291,13 +346,17 @@ private void Yours_Event_Click(object sender, EventArgs e)
     this.hasil = myFunc();
 }
 ```
-#### **API**
+**API**
 ```C#
 CurrentContainerStatus[] GetFinishGoodRecord(string MfgOrderName, string[] listDataCollectionName, bool IgnoreException = true)
 ```
-### 11. GetCounterFromMfgOrder
+</details>
+
+<details>
+<summary><b>11. GetCounterFromMfgOrder</b></summary>
 This function is used for counting the unit for specific resource (Unit Counter), and the return is integer.
-#### **Usage example**
+
+**Usage example**
 ```C#
 ServiceUtil oServiceUtil = new ServiceUtil();
 Camstar.WCF.ObjectStack.wikResourceCounterChanges[] cResourceCounter = new wikResourceCounterChanges[1];
@@ -309,47 +368,63 @@ if (result)
     MessageBox.Show("Success updated!" + " The Total is: " + oServiceUtil.GetCounterFromMfgOrder(getMfgOrder, "BW01-NM1-LS"));
 }
 ```
-#### **API**
+**API**
 ```C#
 int GetCounterFromMfgOrder(string MfgOrderName, string ResourceName, bool IgnoreException = true)
 ```
-### 12. SaveMfgOrder
+</details>
+
+<details>
+<summary><b>12. SaveMfgOrder</b></summary>
 This function is used for Save a Mfg Order with several parameters
-#### **Usage example**
+
+**Usage example**
 ```C#
 ServiceUtil oServiceUtil = new ServiceUtil();
 bool result = oServiceUtil.SaveMfgOrder("Mfg Order Name", "", "", "Product Name", "", "", "", 1000, null, "", oServiceUtil.IsDate("20/01/2021") == true ? "20/01/2021" : "", oServiceUtil.IsDate("20/02/2021") == true ? "20/02/2021" : "", "", "Released", null, "", "", true);
 ```
-#### **API**
+**API**
 ```C#
 public bool SaveMfgOrder(string Name, string Description = "", string Notes = "", string ProductName = "", string ProductRevision = "", string WorkflowName = "", string WorkflowRevision = "", double Qty = 0, List<dynamic> MaterialList = null, string ERPRoute = "", string PlannedStartDate = "", string PlannedCompletedDate = "", string ReleaseDate = "", string OrderStatus = "", wikResourceCounterChanges[] wikListResourceCounter = null, string OrderType = "", string MfgLine = "", bool AutoCreateQueue = false, bool IgnoreException = true)
 ```
-### 13. SaveProduct
+</details>
+
+<details>
+<summary><b>13. SaveProduct</b></summary>
 This function for save a Product with several parameters
-#### **Usage example**
+
+**Usage example**
 ```C#
 ServiceUtil oServiceUtil = new ServiceUtil();
 bool result = oServiceUtil.SaveProduct("70704543", "1", "", "This is a product description", "", "Finish Good")
 ```
-#### **API**
+**API**
 ```C#
 bool SaveProduct(string ProductName, string Revision, string IsRevOfRcd = "", string Description = "", string Notes = "", string ProductType = "", string DocumentSet = "", string WorkflowName = "", string WorkflowRevision = "", string BOMName = "", string BOMRevision = "", string ProductFamily = "", string Procurement = "", string StartUOM = "", double StartQty = 0, bool IgnoreException = true)
 ```
-### 14. SaveManageQueue
+</details>
+
+<details>
+<summary><b>14. SaveManageQueue</b></summary>
 This function is used for save some material into certain queue, the list material is used `List<dynamic>`
-#### **Usage example**
+
+**Usage example**
 ```C#
 List<dynamic> cMaterialQueueDetails = new List<dynamic>();
 cMaterialQueueDetails.Add(new isMaterialQueueDetailsChanges() { isProduct = new RevisionedObjectRef("Name Product"), isQty = 100, isQtyAvailable = 100, isUOM = new NamedObjectRef("Unit"), isRemovalStrategy = isRemovalStrategyEnum.FIFO, isSequence = 0, isConsumedQty = 0, isInventoryLocation = new NamedObjectRef(AppSettings.DefaultInventoryLocation) });
 resultQueue = oServiceUtil.SaveManageQueue("Name Queue", "Name Mfg Order", cMaterialQueueDetails);
 ```
-#### **API**
+**API**
 ```C#
 bool SaveManageQueue(string oQueue, string oMfgOrder = "", List<dynamic> MaterialQueueDetails = null, bool isActive = true, bool IgnoreException = true)
 ```
-### 15. SaveManageInventory
+</details>
+
+<details>
+<summary><b>15. SaveManageInventory</b></summary>
 This function is used for save single material into certain queue
-#### **Usage example**
+
+**Usage example**
 ```C#
 ServiceUtil oServiceUtil = new ServiceUtil();
 if (oServiceUtil.SaveManageInventory("Mfg Order 1", "Default", "0310103600", "0310103600", 10000, "EA"))
@@ -357,13 +432,17 @@ if (oServiceUtil.SaveManageInventory("Mfg Order 1", "Default", "0310103600", "03
     MessageBox.Show(oServiceUtil.LastResultMessage);
 }
 ```
-#### **API**
+**API**
 ```C#
 bool SaveManageInventory(string NameMaterialQueue, string ManageInventory, string ProductNumber, string BatchNumber = "", double Qty = 0, string UOM = "", bool IgnoreException = true)
 ```
-### 16. SaveProductType
+</details>
+
+<details>
+<summary><b>16. SaveProductType</b></summary>
 This function is used for save product Type
-#### **Usage example**
+
+**Usage example**
 ```C#
 ServiceUtil oServiceUtil = new ServiceUtil();
 if (oServiceUtil.SaveProductType("Finish Good", "This is Type Finish Good"))
@@ -371,14 +450,17 @@ if (oServiceUtil.SaveProductType("Finish Good", "This is Type Finish Good"))
     MessageBox.Show(oServiceUtil.LastResultMessage);
 }
 ```
-#### **API**
+**API**
 ```C#
 bool SaveProductType(string Name, string Description = "", bool IgnoreException = true)
 ```
+</details>
 
-### 17. SaveProductFamily
+<details>
+<summary><b>17. SaveProductFamily</b></summary>
 This function is used for save product Family
-#### **Usage example**
+
+**Usage example**
 ```C#
 ServiceUtil oServiceUtil = new ServiceUtil();
 if (oServiceUtil.SaveProductFamily("135", "PCB Assy"))
@@ -386,14 +468,17 @@ if (oServiceUtil.SaveProductFamily("135", "PCB Assy"))
     MessageBox.Show(oServiceUtil.LastResultMessage);
 }
 ```
-#### **API**
+**API**
 ```C#
 bool SaveProductFamily(string Name, string Description = "", string WorkflowName = "", string WorkflowRevision = "", string DocumentSet = "", string ContainerNumberingRule = "", bool IgnoreException = true)
 ```
+</details>
 
-### 18. SaveUOM
+<details>
+<summary><b>18. SaveUOM</b></summary>
 This function is used for save UOM
-#### **Usage example**
+
+**Usage example**
 ```C#
 ServiceUtil oServiceUtil = new ServiceUtil();
 if (oServiceUtil.SaveUOM("EA", "Each"))
@@ -401,28 +486,36 @@ if (oServiceUtil.SaveUOM("EA", "Each"))
     MessageBox.Show(oServiceUtil.LastResultMessage);
 }
 ```
-#### **API**
+**API**
 ```C#
 bool SaveUOM(string Name, string Description = "", bool IgnoreException = true)
 ```
+</details>
 
 ## CONTAINER TXN FUNCTION
-### 1. ExecuteRework
+
+<details>
+<summary><b>1. ExecuteRework</b></summary>
 This function is used for Executing Rework to the certain Container
-#### **Usage example**
+
+**Usage example**
 ```C#
 if (oServiceUtil.ExecuteRework("7070223900-06", "ReasonRework", "Repair", "BW-NM01-R"))
 {
     MessageBox.Show(oServiceUtil.LastResultMessage);
 }
 ```
-#### **API**
+**API**
 ```C#
 bool ExecuteRework(string ContainerName, string ReworkReason, string Path = "", string Resource = "", bool IgnoreException = true)
 ```
-### 2. ExecuteStart
+</details>
+
+<details>
+<summary><b>2. ExecuteStart</b></summary>
 This function is used for Create or Start a Container
-#### **Usage example**
+
+**Usage example**
 ```C#
 ServiceUtil oServiceUtil = new ServiceUtil();
 if (oServiceUtil.ExecuteStart("7070223900-06", "MfgMinime01", "7070223900", "1", "Minime Workflow", "1", "Unit", "Production", "Normal", "", 100, "Unit", "", "", ""))
@@ -430,13 +523,17 @@ if (oServiceUtil.ExecuteStart("7070223900-06", "MfgMinime01", "7070223900", "1",
     MessageBox.Show(oServiceUtil.LastResultMessage);
 }
 ```
-#### **API**
+**API**
 ```C#
 bool ExecuteStart(string ContainerName, string MfgOrder = "", string ProductName = "", string ProductRevision = "", string WorkflowName = "", string WorkflowRevision = "", string Level = "", string Owner = "", string StartReason = "", string PriorityCode = "", double Qty = 0, string UOM = "", string Comments = "", string EmployeeName = "", string TxnDateStr = "", bool IgnoreException = true)
 ```
-### 3. ExecuteMoveIn
+</details>
+
+<details>
+<summary><b>3. ExecuteMoveIn</b></summary>
 This function is used for Executing MoveIn to the certain Container
-#### **Usage example**
+
+**Usage example**
 ```C#
 ServiceUtil oServiceUtil = new ServiceUtil();
 DataPointDetails[] cDataPoint = new DataPointDetails[1];
@@ -446,13 +543,17 @@ if (oServiceUtil.ExecuteMoveIn("7070233900-02", "BW01-NM1-BE", "", "", cDataPoin
     MessageBox.Show(oServiceUtil.LastResultMessage);
 }
 ```
-#### **API**
+**API**
 ```C#
 bool ExecuteMoveIn(string ContainerName, string ResourceName, string DataCollectionName = "", string DataCollectionRev = "", DataPointDetails[] DataPoints = null, string CarrierName = "", bool AttachDetachCarrier = false, bool EnforceResource = false, string Comments = "", string EmployeeName = "", string TxnDateStr = "", bool IgnoreException = true)
 ```
-### 4. ExecuteMoveStd
+</details>
+
+<details>
+<summary><b>4. ExecuteMoveStd</b></summary>
 This function is used for Executing MoveStd to the certain Container
-#### **Usage example**
+
+**Usage example**
 ```C#
 ServiceUtil oServiceUtil = new ServiceUtil();
 Camstar.WCF.ObjectStack.DataPointDetails[] cDataPoint = new Camstar.WCF.ObjectStack.DataPointDetails[4];
@@ -465,13 +566,17 @@ if (oServiceUtil.ExecuteMoveStd("7070233900-04", "", "", "HI-POT Data", "", cDat
     MessageBox.Show(oServiceUtil.LastResultMessage);
 }
 ```
-#### **API**
+**API**
 ```C#
 bool ExecuteMoveStd(string ContainerName, string ToResourceName = "", string Resource = "", string DataCollectionName = "", string DataCollectionRev = "", DataPointDetails[] DataPoints = null, string CarrierName = "", bool AttachDetachCarrier = false, string Comments = "", string EmployeeName = "", string TxnDateStr = "", bool IgnoreException = true)
 ```
-### 5. ExecuteComponentIssue
+</details>
+
+<details>
+<summary><b>5. ExecuteComponentIssue</b></summary>
 This function is used for Executing Component Issued or comsume Material to the certain Container.
-#### **Usage example**
+
+**Usage example**
 ```C#
 List<dynamic> cIssueDetailList = new List<dynamic>();
 cIssueDetailList.Add(new IssueActualDetail { Product = new RevisionedObjectRef("9170482300"), QtyIssued = 1.728});
@@ -483,13 +588,17 @@ if(oServiceUtil.ExecuteComponentIssue("1947575-001", cIssueDetailList))
     Console.WriteLine("failed");
 }
 ```
-#### **API**
+**API**
 ```C#
 bool ExecuteComponentIssue(string ContainerName, List<dynamic> IssueDetailList = null, bool IgnoreException = true)
 ```
-### 6. ContainerExists
-This function is used for check a container wheter container exists or not
-#### **Usage example**
+</details>
+
+<details>
+<summary><b>6. ContainerExists</b></summary>
+This function is used for check a container whether container exists or not
+
+**Usage example**
 ```C#
 ServiceUtil oServiceUtil = new ServiceUtil();
 if (oServiceUtil.ContainerExists("7070233900-04"))
@@ -500,24 +609,32 @@ if (oServiceUtil.ContainerExists("7070233900-04"))
     MessageBox.Show("Container doesn't exists");
 }
 ```
-#### **API**
+**API**
 ```C#
 bool ContainerExists(string ContainerName, bool IgnoreException = true)
 ```
-### 7. GetCurrentContainerStep
+</details>
+
+<details>
+<summary><b>7. GetCurrentContainerStep</b></summary>
 This function is used to get the current step from certain container
-#### **Usage example**
+
+**Usage example**
 ```C#
 ServiceUtil oServiceUtil = new ServiceUtil();
 string result = oServiceUtil.GetCurrentContainerStep("Name of Container");
 ```
-#### **API**
+**API**
 ```C#
 string GetCurrentContainerStep(string ContainerName, bool IgnoreException = true)
 ```
-### 8. GetContainerStatusDetails
+</details>
+
+<details>
+<summary><b>8. GetContainerStatusDetails</b></summary>
 This function is used for Get the details of container from a certain Container
-#### **Usage example**
+
+**Usage example**
 ```C#
 ServiceUtil oServiceUtil = new ServiceUtil();
 
@@ -530,14 +647,17 @@ if (oCurrentContainerStatus != null)
                     "Quantity: " + oCurrentContainerStatus.Qty.ToString());
 }
 ```
-#### **API**
+**API**
 ```C#
 CurrentContainerStatus GetContainerStatusDetails(string ContainerName, string DataCollectionName = "", string DataCollectionRev = "", bool IgnoreException = true)
 ```
+</details>
 
-### 9. ExecuteContainerAttrMaint
+<details>
+<summary><b>9. ExecuteContainerAttrMaint</b></summary>
 This function is used to store data and attach container, this value will move alongside with the container.
-#### **Usage example**
+
+**Usage example**
 ```C#
 ServiceUtil oServiceUtil = new ServiceUtil();
 Camstar.WCF.ObjectStack.ContainerAttrDetail[] cDataAttr = new Camstar.WCF.ObjectStack.ContainerAttrDetail[2];
@@ -551,38 +671,100 @@ if (attrResult)
     MessageBox.Show("Execution Attribute Container Failed");
 }
 ```
-#### **API**
+**API**
 ```C#
 bool ExecuteContainerAttrMaint(string ContainerName, ContainerAttrDetail[] Attributes, string Comments = "", string EmployeeName = "", string TxnDateStr = "", bool IgnoreException = true)
 ```
+</details>
+
+<details>
+<summary><b>10. ExecuteContainerDefect</b></summary>
+This function is used to record the defect with the action, so this function is usually used in Repair
+
+**Usage example**
+```C#
+ServiceUtil oServiceUtil = new ServiceUtil();
+Camstar.WCF.ObjectStack.ContainerDefectDetail[] cDefectList = new Camstar.WCF.ObjectStack.ContainerDefectDetail[2];
+cDefectList[0] = new Camstar.WCF.ObjectStack.ContainerDefectDetail() { Container = new ContainerRef("testing-1"), DefectCount = 1, ReasonCode = new NamedObjectRef("Engineering"), wikNGType = new Primitive<string>() { Value = "NG" }, wikCheckedBy = new Primitive<string>() {  Value = "NARTO" }, wikRepairedBy = new Primitive<string>() { Value = "JACK" }, wikRepairItem = new Primitive<string>() { Value = "Change Plug" }, wikReplacedPN = new Primitive<string>() { Value = "1092374" } };
+cDefectList[1] = new Camstar.WCF.ObjectStack.ContainerDefectDetail() { Container = new ContainerRef("testing-1"), DefectCount = 1, ReasonCode = new NamedObjectRef("Production"), wikNGType = new Primitive<string>() { Value = "NG" }, wikCheckedBy = new Primitive<string>() { Value = "NARTO" }, wikRepairedBy = new Primitive<string>() { Value = "JACK" }, wikRepairItem = new Primitive<string>() { Value = "Change Cable" }, wikReplacedPN = new Primitive<string>() { Value = "1092374" } };
+
+bool result = oServiceUtil.ExecuteContainerDefect("testing-1", cDefectList);
+if (result)
+{
+    MessageBox.Show("Success updated Container Defect");
+} else
+{
+    MessageBox.Show("Failed!");
+}
+```
+**API**
+```C#
+bool ExecuteContainerDefect(string ContainerName, ContainerDefectDetail[] DefectsList, string Comments = "", string EmployeeName = "", string TxnDateStr = "", bool IgnoreException = true)
+```
+</details>
+
+<details>
+<summary><b>11. ExecuteChangeQty</b></summary>
+This function is used to scrap the container
+
+**Usage example**
+```C#
+ServiceUtil oService = new ServiceUtil();
+Camstar.WCF.ObjectStack.ChangeQtyDetails[] cChangeQtyDetails = new Camstar.WCF.ObjectStack.ChangeQtyDetails[1];
+cChangeQtyDetails[0] = new Camstar.WCF.ObjectStack.ChangeQtyDetails() { sswReasonCodeName = new Primitive<string>() { Value = "Production" }, Container = new ContainerRef("1936129-CM2"), ChangeQtyType = new Primitive<int>() { Value = 2 }, Qty = new Primitive<double>() { Value = 1 } };
+bool oResult = oService.ExecuteChangeQty("1936129-CM2", cChangeQtyDetails, "", "Administrator");
+if (oResult)
+{
+    MessageBox.Show("Success");
+} else
+{
+    MessageBox.Show("Failed!");
+}
+```
+**API**
+```C#
+ bool ExecuteChangeQty(string ContainerName, ChangeQtyDetails[] ChangeQtyDetailsList, string Comments = "", string EmployeeName = "", string TxnDateStr = "", bool IgnoreException = true)
+```
+</details>
 
 ## RESOURCE TXN FUNCTION
-### 1. GetResourceStatusReasonGroup
+
+<details>
+<summary><b>1. GetResourceStatusReasonGroup</b></summary>
 This function is used to get the ResourceReasonGroup from Name of Resource Group, or we can get the name from Status Code Reason Group
-#### **Usage example**
+
+**Usage example**
 ```C#
 ServiceUtil oServiceUtil = new ServiceUtil();
 ResStatusReasonGroupChanges oStatusReason = oServiceUtil.GetResourceStatusReasonGroup("Name StatusReason Group");
 ComboBox.DataSource = oStatusReason.Entries;
 ```
-#### **API**
+**API**
 ```C#
 ResStatusReasonGroupChanges GetResourceStatusReasonGroup(string StatusCodeName, bool IgnoreException = true)
 ```
-### 2. GetResourceStatusCode
+</details>
+
+<details>
+<summary><b>2. GetResourceStatusCode</b></summary>
 This function is used for get the details of Resource Status Code
-#### **Usage example**
+
+**Usage example**
 ```C#
 ServiceUtil oServiceUtil = new ServiceUtil();
 ResourceStatusCodeChanges oStatusCode = oServiceUtil.GetResourceStatusCode("Name of Status Code");
 ```
-#### **API**
+**API**
 ```C#
 ResourceStatusCodeChanges GetResourceStatusCode(string StatusCodeName, bool IgnoreException = true)
 ```
-### 3. GetListResourceStatusCode
+</details>
+
+<details>
+<summary><b>3. GetListResourceStatusCode</b></summary>
 This function is used for get the list of resource status code
-#### **Usage example**
+
+**Usage example**
 ```C#
 NamedObjectRef[] oStatusCodeList = oServiceUtil.GetListResourceStatusCode();
 if (oStatusCodeList != null)
@@ -590,13 +772,17 @@ if (oStatusCodeList != null)
     ComboBox.DataSource = oStatusCodeList;
 }
 ```
-#### **API**
+**API**
 ```C#
 NamedObjectRef[] GetListResourceStatusCode(bool IgnoreException = true)
 ```
-### 4. GetCarrierList
+</details>
+
+<details>
+<summary><b>4. GetCarrierList</b></summary>
 This function is used for get all the list of Carrier Name
-#### **Usage example**
+
+**Usage example**
 ```C#
 NamedObjectRef[] oCarrierList = oServiceUtil.GetCarrierList();
 if (oCarrierList != null)
@@ -604,13 +790,17 @@ if (oCarrierList != null)
     ComboBox.DataSource = oCarrierList;
 }
 ```
-#### **API**
+**API**
 ```C#
 NamedObjectRef[] GetCarrierList(bool IgnoreException = true)
 ```
-### 5. GetResourceStatusDetails
+</details>
+
+<details>
+<summary><b>5. GetResourceStatusDetails</b></summary>
 This function is used to get the status of certain resource
-#### **Usage example**
+
+**Usage example**
 ```C#
 ServiceUtil oServiceUtil = new ServiceUtil();
 ResourceStatusDetails oResourceStatusDetails = oServiceUtil.GetResourceStatusDetails("BW01-NA1-BE");
@@ -624,25 +814,33 @@ if (oResourceStatusDetails != null)
                     "Reason: " + sReasonStatus);
 }
 ```
-#### **API**
+**API**
 ```C#
 ResourceStatusDetails GetResourceStatusDetails(string ResourceName, bool IgnoreException = true)
 ```
-### 6. GetMaintenanceStatus
+</details>
+
+<details>
+<summary><b>6. GetMaintenanceStatus</b></summary>
 This function is used to get the list of Maintenance from certain resource name
-#### **Usage example**
+
+**Usage example**
 ```C#
 ServiceUtil oServiceUtil = new ServiceUtil();
 GetMaintenanceStatusDetails[] oMaintenanceStatus = oServiceUtil.GetGetMaintenanceStatus("Name of Resource");
 DataGrid.DataSource = oMaintenanceStatus;
 ```
-#### **API**
+**API**
 ```C#
 GetMaintenanceStatusDetails[] GetGetMaintenanceStatus(string ResourceName, bool IgnoreException = true)
 ```
-### 7. ExecuteResourceSetup
+</details>
+
+<details>
+<summary><b>7. ExecuteResourceSetup</b></summary>
 This function is used for set the status of resource
-#### **Usage example**
+
+**Usage example**
 ```C#
 ServiceUtil oServiceUtil = new ServiceUtil();
 if (oServiceUtil.ExecuteResourceSetup("BW01-NA3-LS", "Engineering Time", "Equipment Experiments"))
@@ -650,13 +848,17 @@ if (oServiceUtil.ExecuteResourceSetup("BW01-NA3-LS", "Engineering Time", "Equipm
     MessageBox.Show(oServiceUtil.LastResultMessage);
 }
 ```
-#### **API**
+**API**
 ```C#
 bool ExecuteResourceSetup(string ResourceName, string Status = "", string Reason = "", string Comments = "", string EmployeeName = "", string TxnDate = "", bool IgnoreException = true)
 ```
-### 8. ExecuteResourceThruput 
+</details>
+
+<details>
+<summary><b>8. ExecuteResourceThruput</b></summary>
 This function is used to increase the thruput of certain resource
-#### **Usage example**
+
+**Usage example**
 ```C#
 ServiceUtil oServiceUtil = new ServiceUtil();
 if (oServiceUtil.ExecuteResourceThruput("BW01-NM1-LS", 1, "unit", "0310103600"))
@@ -664,25 +866,33 @@ if (oServiceUtil.ExecuteResourceThruput("BW01-NM1-LS", 1, "unit", "0310103600"))
     MessageBox.Show(oServiceUtil.LastResultMessage);
 }
 ```
-#### **API**
+**API**
 ```C#
 bool ExecuteResourceThruput(string ResourceName, double Qty = 0, string UOM = "", string ProductName = "", string ProductRevision = "", string Comments = "", string EmployeeName = "", string TxnDate = "", bool IgnoreException = true)
 ```
-### 9. GetResource 
+</details>
+
+<details>
+<summary><b>9. GetResource </b></summary>
 This function is used to get the details of Resource
-#### **Usage example**
+
+**Usage example**
 ```C#
 ResourceChanges oResource = oServiceUtil.GetResource("Name of Resource");
 ```
-#### **API**
+**API**
 ```C#
 public ResourceChanges GetResource(string ResourceName, bool IgnoreException = true)
 ```
+</details>
 
 ## TEAM TRACKING TXN FUNCTION
-### 1. AddTeamMembers
+
+<details>
+<summary><b>1. AddTeamMembers</b></summary>
 This function is used to add some employee to certain Team
-#### **Usage example**
+
+**Usage example**
 ```C#
 ServiceUtil oServiceUtil = new ServiceUtil();
 List<dynamic> cEmployeeList = new List<dynamic>();
@@ -690,13 +900,17 @@ cEmployeeList.Add(new NamedObjectRef("Administrator"));
 cEmployeeList.Add(new NamedObjectRef("CamstarAdmin" ));
 oServiceUtil.AddTeamMembers("TeamLaser", cEmployeeList);
 ```
-#### **API**
+**API**
 ```C#
 bool AddTeamMembers(string TeamName, List<dynamic> EmployeeList, bool IgnoreException = true)
 ```
-### 2. RemoveTeamMembers
+</details>
+
+<details>
+<summary><b>2. RemoveTeamMembers</b></summary>
 This function is used to remove some employee to certain Team
-#### **Usage example**
+
+**Usage example**
 ```C#
 ServiceUtil oServiceUtil = new ServiceUtil();
 List<dynamic> cEmployeeList = new List<dynamic>();
@@ -704,13 +918,17 @@ cEmployeeList.Add(new NamedObjectRef("Administrator"));
 cEmployeeList.Add(new NamedObjectRef("CamstarAdmin"));
 oServiceUtil.RemoveTeamMembers("TeamLaser", cEmployeeList);
 ```
-#### **API**
+**API**
 ```C#
 bool RemoveTeamMembers(string TeamName, List<dynamic> EmployeeList, bool IgnoreException = true)
 ```
-### 3. EmployeeTrackingSignInStatus
+</details>
+
+<details>
+<summary><b>3. EmployeeTrackingSignInStatus</b></summary>
 This function is used to get the list area working of employee which still sign in
-#### **Usage example**
+
+**Usage example**
 ```C#
 ServiceUtil oService = new ServiceUtil();
 mdTeamTrackingStatus[] oList = oService.EmployeeTrackingSignInStatus("Administrator");
@@ -719,26 +937,34 @@ if (oList.Length > 0)
     //Print your object in here
 }
 ```
-#### **API**
+**API**
 ```C#
 mdTeamTrackingStatus[] EmployeeTrackingSignInStatus(string NameEmployee, bool IgnoreException = true)
 ```
-### 4. ExecuteSignInEmployee
+</details>
+
+<details>
+<summary><b>4. ExecuteSignInEmployee</b></summary>
 This function is used to Sign In employee to specific area can be resource, operation, spec, workcenter, workcell, workstation.
-#### **Usage example**
+
+**Usage example**
 ```C#
 ServiceUtil oService = new ServiceUtil();
 bool statusSignIn = oService.ExecuteSignInEmployee("Administrator", "BW01-NM1-LS");
 if (statusSignIn) MessageBox.Show("Success Sign In");
 else MessageBox.Show("Failed to Sign In");
 ```
-#### **API**
+**API**
 ```C#
 bool ExecuteSignInEmployee(string NameEmployee, string Resource = "", string Operation = "", string Spec = "", string SpecRevision = "", string WorkCell = "", string WorkCenter = "", string Workstation = "",  bool IgnoreException = true)
 ```
-### 5. ExecuteSignOutEmploye
+</details>
+
+<details>
+<summary><b>5. ExecuteSignOutEmploye</b></summary>
 This function is used to Sign Out employee, can be multiple area using 1 time execute.
-#### **Usage example**
+
+**Usage example**
 ```C#
 ServiceUtil oService = new ServiceUtil();
 mdTeamTrackingStatus[] oList = oService.EmployeeTrackingSignInStatus("Administrator");
@@ -754,7 +980,50 @@ bool statusSignIn = oService.ExecuteSignOutEmploye("Administrator");
 if (statusSignIn) MessageBox.Show("Success Sign Out");
 else MessageBox.Show("Failed to Sign Out");
 ```
-#### **API**
+**API**
 ```C#
 ExecuteSignOutEmploye(string NameEmployee, mdTeamTrackingStatus[] oMdTeamTrackingStatuses = null, bool IgnoreException = true)
 ```
+</details>
+
+
+
+## Others
+
+<details>
+<summary><b>Dynamic Form</b></summary>
+
+![Dynamic Form](./Images/DynamicForm.jpg)
+
+**Usage example**
+```C#
+public string[] defectList = { "Defect 1", "Defect 2", "Defect 3", "Defect 4" };
+private void Bt_GenerateDynamicForm_Click(object sender, EventArgs e)
+{
+  const int TEXTBOX_WIDTH = 300;
+  const int TEXTBOX_HEIGHT = 30;
+  const int SPACING = 20;
+  List<TextBox> listTextBox = new List<TextBox>();
+  List<System.Windows.Forms.Label> listLabels = new List<System.Windows.Forms.Label>();
+  for(int i = 0; i < defectList.Length; i++)
+  {
+    listLabels.Add(new System.Windows.Forms.Label() { Text = defectList[i], Top = (i * (TEXTBOX_HEIGHT + SPACING) + SPACING) - 13, Left = 750, ForeColor = Color.Black, BackColor = Color.Transparent });
+    listTextBox.Add(new TextBox() {Name = $"Tb_Action{i}", Width = TEXTBOX_WIDTH, Height = TEXTBOX_HEIGHT, Top = (i * (TEXTBOX_HEIGHT + SPACING) + SPACING) , Left = 750});
+    this.Controls.Add(listTextBox[i]);
+    this.Controls.Add(listLabels[i]);
+  }
+  Button BtAction = new Button() { Name = "Bt_SubmitAction", Text = "Submit Action", Left = 750, Width = 100, Top = (defectList.Length * (TEXTBOX_HEIGHT + SPACING) + SPACING), ForeColor = Color.Black, BackColor = Color.White };
+  BtAction.Click += new EventHandler(DynamicButton_Click);
+  this.Controls.Add(BtAction);
+}
+private void DynamicButton_Click(object sender, EventArgs e)
+{
+  string s = "";
+  for (int i = 0; i < defectList.Length; i++)
+  {
+      s += "Action: " + defectList[i] + " = " + ((TextBox)this.Controls["Tb_Action1"]).Text +"\n";
+  }
+  MessageBox.Show(s);
+}
+```
+</details>
