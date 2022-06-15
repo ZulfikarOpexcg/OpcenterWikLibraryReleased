@@ -713,29 +713,7 @@ CurrentContainerStatus GetContainerStatusDetails(string ContainerName, string Da
 </details>
 
 <details>
-<summary><b>9. GetContainerStatusStep</b></summary>
-This function is used for Get the currennt step of container from a certain Container
-
-**Usage example**
-```C#
-ServiceUtil oServiceUtil = new ServiceUtil();
-string currentStep = oServiceUtil.GetContainerStatusDetails("7070233900-04", "FCT Data");
-if (currentStep != "")
-{
-    MessageBox.Show("Container: " + oCurrentContainerStatus.ContainerName.ToString() + "\n" +
-                    "Product: " + oCurrentContainerStatus.ProductName.ToString() + "\n" +
-                    "Workflow: " + oCurrentContainerStatus.WorkflowName.ToString() + "\n" +
-                    "Quantity: " + oCurrentContainerStatus.Qty.ToString());
-}
-```
-**API**
-```C#
-public string GetContainerStatusStep(string ContainerName, string DataCollectionName = "", string DataCollectionRev = "", bool IgnoreException = true)
-```
-</details>
-
-<details>
-<summary><b>10. ExecuteContainerAttrMaint</b></summary>
+<summary><b>9. ExecuteContainerAttrMaint</b></summary>
 This function is used to store data and attach container, this value will move alongside with the container.
 
 **Usage example**
@@ -759,7 +737,7 @@ bool ExecuteContainerAttrMaint(string ContainerName, ContainerAttrDetail[] Attri
 </details>
 
 <details>
-<summary><b>11. ExecuteContainerDefect</b></summary>
+<summary><b>10. ExecuteContainerDefect</b></summary>
 This function is used to record the defect with the action, so this function is usually used in Repair
 
 **Usage example**
@@ -785,7 +763,7 @@ bool ExecuteContainerDefect(string ContainerName, ContainerDefectDetail[] Defect
 </details>
 
 <details>
-<summary><b>12. ExecuteChangeQty</b></summary>
+<summary><b>11. ExecuteChangeQty</b></summary>
 This function is used to scrap the container
 
 **Usage example**
@@ -809,7 +787,7 @@ if (oResult)
 </details>
 
 <details>
-<summary><b>13. ExecuteContainerMaintenance</b></summary>
+<summary><b>12. ExecuteContainerMaintenance</b></summary>
 This function is used to change the information of the container, maybe want to change Mfg Order / PO
 
 **Usage example**
