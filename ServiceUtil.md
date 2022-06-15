@@ -624,11 +624,25 @@ This function is used for Executing Component Issued or comsume Material to the 
 **Usage example**
 ```C#
 List<dynamic> cIssueDetailList = new List<dynamic>();
-cIssueDetailList.Add(new IssueActualDetail { Product = new RevisionedObjectRef("9170482300"), QtyIssued = 1.728});
+cIssueDetailList.Add(new IssueActualDetail { Product = new RevisionedObjectRef("1350055900"), FromLot = "1350091901TB:500373230VHW:007SW:V04212630001252", QtyIssued = 1.728});
 if(oServiceUtil.ExecuteComponentIssue("1947575-001", cIssueDetailList))
 {
     Console.WriteLine("success");
 } else
+{
+    Console.WriteLine("failed");
+}
+```
+If we've ever comsume material before, and will consume with same product and qty, we need put **Issue Difference Reason**
+```C#
+ServiceUtil oServiceUtil = new ServiceUtil();
+List<dynamic> cIssueDetailList = new List<dynamic>();
+cIssueDetailList.Add(new IssueActualDetail { Product = new RevisionedObjectRef("1350055900"), QtyIssued = 1, FromLot = "1350091901TB:500373230VHW:007SW:V04212630001252", IssueDifferenceReason = new NamedObjectRef("Customer") });
+if (oServiceUtil.ExecuteComponentIssue("testing2", cIssueDetailList))
+{
+    Console.WriteLine("success");
+}
+else
 {
     Console.WriteLine("failed");
 }
