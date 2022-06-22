@@ -537,6 +537,37 @@ NamedObjectRef[] GetListReworkReason(bool IgnoreException = true)
 ```
 </details>
 
+<details>
+<summary><b>22. GetContainerDefectReasonGroup</b></summary>
+This function is used to get all the list of  DefectReasonGroupName
+
+**Usage example**
+```C#
+ServiceUtil oServiceUtil = new ServiceUtil();
+ContDefectReasonGroupChanges test = oServiceUtil.GetContainerDefectReasonGroup("ReasonGroupA");
+```
+**API**
+```C#
+public ContDefectReasonGroupChanges GetContainerDefectReasonGroup(string DefectReasonGroupName ,bool IgnoreException = true)
+```
+</details>
+
+<details>
+<summary><b>23. GetListContainerDefectReason</b></summary>
+This function is used to get all the list of DefectReasonName
+
+**Usage example**
+```C#
+ServiceUtil oServiceUtil = new ServiceUtil();
+NamedObjectRef[] cReasonList = oServiceUtil.GetListContainerDefectReason();
+Console.WriteLine(cReasonList);
+```
+**API**
+```C#
+public NamedObjectRef[] GetListContainerDefectReason(bool IgnoreException = true)
+```
+</details>
+
 ## CONTAINER TXN FUNCTION
 
 <details>
