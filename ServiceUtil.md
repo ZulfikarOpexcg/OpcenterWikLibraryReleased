@@ -568,6 +568,22 @@ public NamedObjectRef[] GetListContainerDefectReason(bool IgnoreException = true
 ```
 </details>
 
+<details>
+<summary><b>24. GetListContainerDefectReasonGroupName</b></summary>
+This function is used to get all the list of DefectReasonGroupName
+
+**Usage example**
+```C#
+ServiceUtil oServiceUtil = new ServiceUtil();
+NamedObjectRef[] cListDefectReasonGroupName = oServiceUtil.GetListContainerDefectReasonGroupName();
+Console.WriteLine(cListDefectReasonGroupName);
+```
+**API**
+```C#
+public NamedObjectRef[] GetListContainerDefectReasonGroupName(bool IgnoreException = true)
+```
+</details>
+
 ## CONTAINER TXN FUNCTION
 
 <details>
