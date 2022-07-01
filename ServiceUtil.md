@@ -584,6 +584,45 @@ public NamedObjectRef[] GetListContainerDefectReasonGroupName(bool IgnoreExcepti
 ```
 </details>
 
+<details>
+<summary><b>25. SaveRepairActionReason</b></summary>
+This function is used create Repair Action Reason
+
+**Usage example**
+```C#
+ServiceUtil oService = new ServiceUtil();
+bool bResult = oService.SaveRepairActionReason("Change Component 2", "Change Component Material 2");
+if (bResult)
+{
+    MessageBox.Show("Success");
+}
+else
+{
+    MessageBox.Show("Failed");
+}
+```
+**API**
+```C#
+public bool SaveRepairActionReason(string Name, string Description = "", bool IgnoreException = true)
+```
+</details>
+
+<details>
+<summary><b>26. GetListRepairActionReason</b></summary>
+This function is used to get the list of Repair Action Reason
+
+**Usage example**
+```C#
+ServiceUtil oService = new ServiceUtil();
+NamedObjectRef[] list = oService.GetListRepairActionReason();
+Console.WriteLine(list);
+```
+**API**
+```C#
+public NamedObjectRef[] GetListRepairActionReason(bool IgnoreException = true)
+```
+</details>
+
 ## CONTAINER TXN FUNCTION
 
 <details>
@@ -854,6 +893,31 @@ else
 **API**
 ```C#
 bool ExecuteContainerMaintenance(string ContainerName, ContainerMaintDetail MaintDetail , string Comments = "", string EmployeeName = "", string TxnDateStr = "", bool IgnoreException = true)
+```
+</details>
+
+<details>
+<summary><b>13. ExecuteRepairAction</b></summary>
+This function is used to record the action connect to the container
+
+**Usage example**
+```C#
+List<dynamic> repairActionList = new List<dynamic>();
+repairActionList.Add(new wikRepairActionDetails() { wikRepairActionReason = new NamedObjectRef("Change Component") });
+repairActionList.Add(new wikRepairActionDetails() { wikRepairActionReason = new NamedObjectRef("Change Component 2") });
+bool bResult = oService.ExecuteRepairAction("testing2", repairActionList);
+if (bResult)
+{
+    MessageBox.Show("Success");
+}
+else
+{
+    MessageBox.Show("Failed");
+}
+```
+**API**
+```C#
+public bool ExecuteRepairAction(string ContainerName, List<dynamic> arrayServiceDetails, string Comments = "", string EmployeeName = "", string TxnDateStr = "", bool IgnoreException = true)
 ```
 </details>
 
