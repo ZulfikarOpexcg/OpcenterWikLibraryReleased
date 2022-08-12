@@ -45,6 +45,9 @@
 		<add key="ReferenceUNCPathPassword" value=""/>
 		<add key="ReferenceFolder" value="C:\Temp\ExCoreService\SourceFiles"/>
 
+		<!-- Distributed Cached Help -->
+		<add key="CachedHost" value="localhost:6379" />
+
 		<add key="Resource" value="BW01-NM1-LS"/>
 		<add key="Line" value="BW01-NM1"/>
 

@@ -281,7 +281,22 @@ public ReworkPathChanges[] GetReworkPath(string WorkflowName, string ContainerNa
 </details>
 
 <details>
-<summary><b>7. GetERPRouteFromMfgOrder</b></summary>
+<summary><b>7. GetReworkPath</b></summary>
+This function is used for getting the list of path rework, **(Override Method)**
+
+**Usage example**
+```C#
+StepChanges[] oStepRework = oServiceUtil.GetReworkPath("Minime Workflow");
+```
+**API**
+```C#
+public StepChanges[] GetReworkPath(string WorkflowName, string WorkflowRevision = "", bool IgnoreException = true)
+```
+</details>
+
+
+<details>
+<summary><b>8. GetERPRouteFromMfgOrder</b></summary>
 This function is used for Get ERP Route from certain string Mfg Order name
 
 **Usage example**
@@ -296,7 +311,7 @@ ERPRouteChanges GetERPRouteFromMfgOrder(MfgOrderChanges oMfgOrder, bool IgnoreEx
 </details>
 
 <details>
-<summary><b>8. GetERPRoute</b></summary>
+<summary><b>9. GetERPRoute</b></summary>
 This function is used for Get the details ERP Route from certain String ERP Route name
 
 **Usage example**
@@ -311,7 +326,7 @@ ERPRouteChanges GetERPRoute(string ERPRouteName, string ERPRouteRevision = "", b
 </details>
 
 <details>
-<summary><b>9. GetMfgOrder</b></summary>
+<summary><b>10. GetMfgOrder</b></summary>
 This function is used for Get the details Mfg Order from certain String Mfg Order name
 
 **Usage example**
@@ -325,7 +340,7 @@ MfgOrderChanges GetMfgOrder(string MfgOrderName, bool IgnoreException = true)
 </details>
 
 <details>
-<summary><b>10. GetListMfgOrder</b></summary>
+<summary><b>11. GetListMfgOrder</b></summary>
 This function is used for Get all the list of Mfg Order
 
 **Usage example**
@@ -340,7 +355,7 @@ NamedObjectRef[] GetListMfgOrder(bool IgnoreException = true)
 </details>
 
 <details>
-<summary><b>11. GetFinishGoodRecord</b></summary>
+<summary><b>12. GetFinishGoodRecord</b></summary>
 This function is used for Getting all the record Container within the Mfg Order. And this function must be used Asynchronous method, otherwise will freeze your application.
 
 **Usage example**
@@ -368,7 +383,7 @@ CurrentContainerStatus[] GetFinishGoodRecord(string MfgOrderName, string[] listD
 </details>
 
 <details>
-<summary><b>12. GetCounterFromMfgOrder</b></summary>
+<summary><b>13. GetCounterFromMfgOrder</b></summary>
 This function is used for counting the unit for specific resource (Unit Counter), and the return is integer.
 
 **Usage example**
@@ -390,7 +405,7 @@ int GetCounterFromMfgOrder(string MfgOrderName, string ResourceName, bool Ignore
 </details>
 
 <details>
-<summary><b>13. SaveMfgOrder</b></summary>
+<summary><b>14. SaveMfgOrder</b></summary>
 This function is used for Save a Mfg Order with several parameters
 
 **Usage example**
@@ -405,7 +420,7 @@ public bool SaveMfgOrder(string Name, string Description = "", string Notes = ""
 </details>
 
 <details>
-<summary><b>14. SaveProduct</b></summary>
+<summary><b>15. SaveProduct</b></summary>
 This function for save a Product with several parameters
 
 **Usage example**
@@ -420,7 +435,7 @@ bool SaveProduct(string ProductName, string Revision, string IsRevOfRcd = "", st
 </details>
 
 <details>
-<summary><b>15. SaveManageQueue</b></summary>
+<summary><b>16. SaveManageQueue</b></summary>
 This function is used for save some material into certain queue, the list material is used `List<dynamic>`
 
 **Usage example**
@@ -436,7 +451,7 @@ bool SaveManageQueue(string oQueue, string oMfgOrder = "", List<dynamic> Materia
 </details>
 
 <details>
-<summary><b>16. SaveManageInventory</b></summary>
+<summary><b>17. SaveManageInventory</b></summary>
 This function is used for save single material into certain queue
 
 **Usage example**
@@ -454,7 +469,7 @@ bool SaveManageInventory(string NameMaterialQueue, string ManageInventory, strin
 </details>
 
 <details>
-<summary><b>17. SaveProductType</b></summary>
+<summary><b>18. SaveProductType</b></summary>
 This function is used for save product Type
 
 **Usage example**
@@ -472,7 +487,7 @@ bool SaveProductType(string Name, string Description = "", bool IgnoreException 
 </details>
 
 <details>
-<summary><b>18. SaveProductFamily</b></summary>
+<summary><b>19. SaveProductFamily</b></summary>
 This function is used for save product Family
 
 **Usage example**
@@ -490,7 +505,7 @@ bool SaveProductFamily(string Name, string Description = "", string WorkflowName
 </details>
 
 <details>
-<summary><b>19. SaveUOM</b></summary>
+<summary><b>20. SaveUOM</b></summary>
 This function is used for save UOM
 
 **Usage example**
@@ -508,7 +523,7 @@ bool SaveUOM(string Name, string Description = "", bool IgnoreException = true)
 </details>
 
 <details>
-<summary><b>20. GetReworkReasonGroup</b></summary>
+<summary><b>21. GetReworkReasonGroup</b></summary>
 This function is used for getting the details of Rework Reason Group
 
 **Usage example**
@@ -523,7 +538,7 @@ ReworkReasonGroupChanges GetReworkReasonGroup(string ReworkReasonGroupName = "De
 </details>
 
 <details>
-<summary><b>21. GetListReworkReason</b></summary>
+<summary><b>22. GetListReworkReason</b></summary>
 This function is used to get all the list of rework reason 
 
 **Usage example**
@@ -538,7 +553,7 @@ NamedObjectRef[] GetListReworkReason(bool IgnoreException = true)
 </details>
 
 <details>
-<summary><b>22. GetContainerDefectReasonGroup</b></summary>
+<summary><b>23. GetContainerDefectReasonGroup</b></summary>
 This function is used to get all the list of  DefectReasonGroupName
 
 **Usage example**
@@ -553,7 +568,7 @@ public ContDefectReasonGroupChanges GetContainerDefectReasonGroup(string DefectR
 </details>
 
 <details>
-<summary><b>23. GetListContainerDefectReason</b></summary>
+<summary><b>24. GetListContainerDefectReason</b></summary>
 This function is used to get all the list of DefectReasonName
 
 **Usage example**
@@ -569,7 +584,7 @@ public NamedObjectRef[] GetListContainerDefectReason(bool IgnoreException = true
 </details>
 
 <details>
-<summary><b>24. GetListContainerDefectReasonGroupName</b></summary>
+<summary><b>25. GetListContainerDefectReasonGroupName</b></summary>
 This function is used to get all the list of DefectReasonGroupName
 
 **Usage example**
@@ -585,7 +600,7 @@ public NamedObjectRef[] GetListContainerDefectReasonGroupName(bool IgnoreExcepti
 </details>
 
 <details>
-<summary><b>25. SaveRepairActionReason</b></summary>
+<summary><b>26. SaveRepairActionReason</b></summary>
 This function is used create Repair Action Reason
 
 **Usage example**
@@ -608,7 +623,7 @@ public bool SaveRepairActionReason(string Name, string Description = "", bool Ig
 </details>
 
 <details>
-<summary><b>26. GetListRepairActionReason</b></summary>
+<summary><b>27. GetListRepairActionReason</b></summary>
 This function is used to get the list of Repair Action Reason
 
 **Usage example**
@@ -620,6 +635,180 @@ Console.WriteLine(list);
 **API**
 ```C#
 public NamedObjectRef[] GetListRepairActionReason(bool IgnoreException = true)
+```
+</details>
+
+<details>
+<summary><b>28. SaveReworkReason</b></summary>
+This function is used to save the rework reason
+
+**Usage example**
+```C#
+ServiceUtil oServiceUtil = new ServiceUtil();
+bool bResult = oServiceUtil.SaveReworkReason("Problem Pump", "There's problem on Pump");
+if (bResult)
+{
+    MessageBox.Show("Success");
+}
+else
+{
+    MessageBox.Show("Failed");
+}
+```
+**API**
+```C#
+public bool SaveReworkReason(string Name, string Description = "", bool IgnoreException = true)
+```
+</details>
+
+<details>
+<summary><b>29. SaveReworkReasonGroup</b></summary>
+This function is used to save the rework reason Group with entries
+
+**Usage example**
+```C#
+ ServiceUtil oServiceUtil = new ServiceUtil();
+NamedObjectRef[] obj = new NamedObjectRef[2] { new NamedObjectRef() { Name = "New Rework" }, new NamedObjectRef() { Name = "Test" } };
+bool bResult = oServiceUtil.SaveReworkReasonGroup("Default", "", obj);
+if (bResult)
+{
+    MessageBox.Show("Success");
+}
+else
+{
+    MessageBox.Show("Failed");
+}
+```
+**API**
+```C#
+public bool SaveReworkReasonGroup(string Name, string Description = "", NamedObjectRef[] ReworkReasons = null, bool IgnoreException = true)
+```
+</details>
+
+<details>
+<summary><b>30. GetFinishGoodRecordSyncWithServer</b></summary>
+This function is used to sync the data Finish Good Record beetwen server and distributed cached
+
+**Usage example**
+```C#
+private async void Bt_MfgOrder_Click(object sender, EventArgs e)
+{
+    IFinishGoodRecord[] getSyncDataFromServer = await oService.GetFinishGoodRecordSyncWithServer("10032739", listDataCollectionName, TimeSpan.FromSeconds(60));
+}
+private string[] listDataCollectionName = new string[] { "Laser Marking Minime", "HI-POT Minime", "FCT Minime", "Visual Checking Minime", "Weighing Minime", "Laser Marking Ariel", "HI-POT Ariel", "FCT Ariel", "Visual Checking Ariel", "Weighing Ariel" };
+```
+**API**
+```C#
+public async Task<IFinishGoodRecord[]> GetFinishGoodRecordSyncWithServer(string MfgOrderName, string[] listDataCollectionName, TimeSpan? expireTime = null, bool IgnoreException = true)
+```
+</details>
+
+<details>
+<summary><b>31. UpdateOrCreateFinishGoodRecordToCached</b></summary>
+This function is used to Update Or Create 1 Record of Finish Good Record into distributed cached.
+
+**Usage example**
+```C#
+private async void Bt_MfgOrder_Click(object sender, EventArgs e)
+{
+    bool data1 = await oService.UpdateOrCreateFinishGoodRecordToCached( "PO123", "Container1", "CP_LS", TimeSpan.FromSeconds(60));
+    var data2 = await oService.UpdateOrCreateFinishGoodRecordToCached( "PO123", "Container2", "CP_PPA", TimeSpan.FromSeconds(60));
+    bool data3 = await oService.UpdateOrCreateFinishGoodRecordToCached("PO123", "Container1", "CP_BE", TimeSpan.FromSeconds(60));
+}
+```
+**API**
+```C#
+public async Task<bool> UpdateOrCreateFinishGoodRecordToCached(string MfgOrderName, string ContainerName, string ResourceNameUpdate, TimeSpan? expireTime = null, bool IgnoreException = true)
+```
+</details>
+
+<details>
+<summary><b>32. GetFinishGoodRecordFromCached</b></summary>
+This function is used to get record Finish Good Record from distributed cached
+
+**Usage example**
+```C#
+private async void Bt_MfgOrder_Click(object sender, EventArgs e)
+{
+    var findMfgOrder = oService.GetMfgOrder("10032739");
+    List<string> containerList = new List<string>();
+    if (findMfgOrder.Containers != null)
+    {
+        if (findMfgOrder.Containers.Length > 0)
+        {
+            foreach (var item in findMfgOrder.Containers)
+            {
+                containerList.Add(item.ToString());
+            }
+        }
+    }
+    var getFromCached = await oService.GetFinishGoodRecordFromCached("10032739", containerList);
+    Console.WriteLine(getFromCached);
+}
+```
+**API**
+```C#
+public async Task<IFinishGoodRecord[]> GetFinishGoodRecordFromCached(string MfgOrderName, List<string> ContainerList, bool IgnoreException = true)
+```
+</details>
+
+<details>
+<summary><b>33. SaveMfgResourceCounterCached</b></summary>
+This function is used save number of resource counter to the distributed cached
+
+**Usage example**
+```C#
+private async void Bt_Counter_Click(object sender, EventArgs e)
+{
+    string recordId = await oServiceUtil.SaveMfgResourceCounterCached("1946087", "BW01-NM1-LS", 5, TimeSpan.FromSeconds(20));
+}
+```
+**API**
+```C#
+public async Task<string> SaveMfgResourceCounterCached(string MfgOrderName, string ResourceName, int DataCounter, TimeSpan? expireTime = null, bool IgnoreException = true)
+```
+</details>
+
+<details>
+<summary><b>34. GetMfgResourceCounterCached</b></summary>
+This function is used to get the number of resource counter from the distributed cached
+
+**Usage example**
+```C#
+private async void Bt_Counter_Click(object sender, EventArgs e)
+{
+    string MfgOrderName = "1946087";
+    string ResourceName = "BW01-NM1-LS";
+    string recordId = await oServiceUtil.SaveMfgResourceCounterCached("1946087", "BW01-NM1-LS", 5, TimeSpan.FromSeconds(20));
+    IResourceCounter data1 = await oServiceUtil.GetMfgResourceCounterCached(recordId);
+    IResourceCounter data2 = await oServiceUtil.GetMfgResourceCounterCached(MfgOrderName + ResourceName);
+}
+```
+**API**
+```C#
+public async Task<ResourceCounter> GetMfgResourceCounterCached(string RecordId, bool IgnoreException = true)
+```
+</details>
+
+<details>
+<summary><b>35. SaveMfgOrderResourceCounter</b></summary>
+This function is used to save resource counter to opcenter mfg order, if the resource name counter already exists it will replaced by the new record.
+
+**Usage example**
+```C#
+private void Bt_Counter_Click(object sender, EventArgs e)
+{
+    ServiceUtil oServiceUtil = new ServiceUtil();
+    Camstar.WCF.ObjectStack.wikResourceCounterChanges[] cResourceCounter = new wikResourceCounterChanges[2];
+    MfgOrderChanges MfgOrder = oServiceUtil.GetMfgOrder("TestResourceCounter");
+    cResourceCounter[0] = new Camstar.WCF.ObjectStack.wikResourceCounterChanges() { Resource = new NamedObjectRef("BW01-NM1-BE"), wikCounterUnit = 9 };
+    cResourceCounter[1] = new Camstar.WCF.ObjectStack.wikResourceCounterChanges() { Resource = new NamedObjectRef("BW01-NM1-VC"), wikCounterUnit = 4 };
+    bool result = SaveMfgOrderResourceCounter(cResourceCounter, MfgOrder);
+}
+```
+**API**
+```C#
+public bool SaveMfgOrderResourceCounter(wikResourceCounterChanges[] wikListResourceCounter, MfgOrderChanges MfgOrder, bool IgnoreException = true)
 ```
 </details>
 
@@ -918,6 +1107,27 @@ else
 **API**
 ```C#
 public bool ExecuteRepairAction(string ContainerName, List<dynamic> arrayServiceDetails, string Comments = "", string EmployeeName = "", string TxnDateStr = "", bool IgnoreException = true)
+```
+</details>
+
+<details>
+<summary><b>14. ExecuteMoveNonStd</b></summary>
+This function is used to execute Move Non Std
+
+**Usage example**
+```C#
+bool bResult = ExecuteMoveNonStd("01322B50P000513N065", "Backend");
+if (bResult)
+{
+    MessageBox.Show("Success");
+} else
+{
+    MessageBox.Show("Failed");
+}
+```
+**API**
+```C#
+public bool ExecuteMoveNonStd(string ContainerName, string ToStep, string Resource = "", string Comments = "", string EmployeeName = "", string TxnDateStr = "", bool IgnoreException = true)
 ```
 </details>
 
