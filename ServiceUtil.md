@@ -812,6 +812,28 @@ public bool SaveMfgOrderResourceCounter(wikResourceCounterChanges[] wikListResou
 ```
 </details>
 
+<details>
+<summary><b>36. GetAllMfgResourceCounterCached</b></summary>
+This function is used to get all the data resource counter with some pattern, for example we have:
+- 1BW01-NM1-LS
+- 2BW01-NM1-LS
+- 3BW01-NM1-LS
+- 1BW01-NM1-PPA
+if we used *BW01-NM1-LS, it will result 3 data
+
+**Usage example**
+```C#
+private void Bt_Counter_Click(object sender, EventArgs e)
+{
+    var data = await GetAllMfgResourceCounterCached("*BW01-NM1-LS");
+}
+```
+**API**
+```C#
+ public async Task<List<ResourceCounter>> GetAllMfgResourceCounterCached(string Pattern, bool IgnoreException = true)
+```
+</details>
+
 ## CONTAINER TXN FUNCTION
 
 <details>
