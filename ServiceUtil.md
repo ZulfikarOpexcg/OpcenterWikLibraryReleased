@@ -726,7 +726,7 @@ public async Task<bool> UpdateOrCreateFinishGoodRecordToCached(string MfgOrderNa
 <summary><b>32. GetFinishGoodRecordFromCached</b></summary>
 This function is used to get record Finish Good Record from distributed cached
 
-**Usage example**
+**Usage example 1**
 ```C#
 private async void Bt_MfgOrder_Click(object sender, EventArgs e)
 {
@@ -746,9 +746,24 @@ private async void Bt_MfgOrder_Click(object sender, EventArgs e)
     Console.WriteLine(getFromCached);
 }
 ```
+
+**Usage example 2**
+```C#
+private async void Bt_MfgOrder_Click(object sender, EventArgs e)
+{
+    ServiceUtil oService = new ServiceUtil();
+    var dataExists = await oService.UpdateOrCreateFinishGoodRecordToCached( "PO123", "Container1", "CP_LS", TimeSpan.FromSeconds(60));
+    var dataNotExists = await oService.UpdateOrCreateFinishGoodRecordToCached( "PO123", "Container2", "CP_PPA", TimeSpan.FromSeconds(60));
+    var updateOneRecord = await oService.UpdateOrCreateFinishGoodRecordToCached("PO123", "Container1", "CP_BE", TimeSpan.FromSeconds(60));
+    var getFromCached = await oService.GetFinishGoodRecordFromCached("PO123");
+    Console.WriteLine(getFromCached);
+}
+```
 **API**
 ```C#
 public async Task<IFinishGoodRecord[]> GetFinishGoodRecordFromCached(string MfgOrderName, List<string> ContainerList, bool IgnoreException = true)
+
+public async Task<List<IFinishGoodRecord>> GetFinishGoodRecordFromCached(string MfgOrderName, bool IgnoreException = true)
 ```
 </details>
 
@@ -814,12 +829,8 @@ public bool SaveMfgOrderResourceCounter(wikResourceCounterChanges[] wikListResou
 
 <details>
 <summary><b>36. GetAllMfgResourceCounterCached</b></summary>
-This function is used to get all the data resource counter with some pattern, for example we have:
-- 1BW01-NM1-LS
-- 2BW01-NM1-LS
-- 3BW01-NM1-LS
-- 1BW01-NM1-PPA
-if we used *BW01-NM1-LS, it will result 3 data
+This function is used to get all the data resource counter with some pattern, for example we have: 1BW01-NM1-LS, 2BW01-NM1-LS, 3BW01-NM1-LS, 1BW01-NM1-PPA
+if we used *BW01-NM1-LS, it will resulting 3 data
 
 **Usage example**
 ```C#
