@@ -705,7 +705,7 @@ public async Task<IFinishGoodRecord[]> GetFinishGoodRecordSyncWithServer(string 
 
 <details>
 <summary><b>31. UpdateOrCreateFinishGoodRecordToCached</b></summary>
-This function is used to Update Or Create 1 Record of Finish Good Record into distributed cached.
+This function is used to Update Or Create 1 Record of Finish Good Record into distributed cached. There's 2 overload method that we can set isScraped, this is for indicated that, this unit scraped
 
 **Usage example**
 ```C#
@@ -719,6 +719,8 @@ private async void Bt_MfgOrder_Click(object sender, EventArgs e)
 **API**
 ```C#
 public async Task<bool> UpdateOrCreateFinishGoodRecordToCached(string MfgOrderName, string ContainerName, string ResourceNameUpdate, TimeSpan? expireTime = null, bool IgnoreException = true)
+
+public async Task<bool> UpdateOrCreateFinishGoodRecordToCached(string MfgOrderName, string ContainerName, string ResourceNameUpdate, TimeSpan? expireTime = null, bool isScraped = false, bool IgnoreException = true)
 ```
 </details>
 
@@ -842,6 +844,63 @@ private void Bt_Counter_Click(object sender, EventArgs e)
 **API**
 ```C#
  public async Task<List<ResourceCounter>> GetAllMfgResourceCounterCached(string Pattern, bool IgnoreException = true)
+```
+</details>
+
+<details>
+<summary><b>37. ExecuteScap</b></summary>
+This function is used to Scrap Container
+
+
+**Usage example**
+```C#
+private void Bt_Scraped_Click(object sender, EventArgs e)
+{
+    bool bResult =  oService.ExecuteScap("ContainerTest2", "Scrap Unit", 1);
+    if (bResult) {
+        MessageBox.Show('Success Scraped!');
+    }
+}
+```
+**API**
+```C#
+public bool ExecuteScap(string ContainerName, string ScrapReason, double Qty, bool isDisplayInFG = true, string ReasonOpenContainer = "", string Comments = "", string EmployeeName = "", string TxnDateStr = "", bool IgnoreException = true)
+```
+</details>
+
+<details>
+<summary><b>38. ExecuteCloseContainer</b></summary>
+This function is used to Close Container
+
+**Usage example**
+```C#
+private void Bt_Close_Click(object sender, EventArgs e)
+{
+    bool statusClose = oService.ExecuteCloseContainer("ContainerTest1");
+    MessageBox.Show("Status Close Container " + statusClose);
+}
+```
+**API**
+```C#
+public bool ExecuteCloseContainer(string ContainerName, string ChangeStatusReasonName = "", string Comments = "", string EmployeeName = "", string TxnDateStr = "", bool IgnoreException = true)
+```
+</details>
+
+<details>
+<summary><b>39. ExecuteOpenContainer</b></summary>
+This function is used to Open Container
+
+**Usage example**
+```C#
+private void Bt_Open_Click(object sender, EventArgs e)
+{
+    bool statusOpen = oService.ExecuteOpenContainer("ContainerTest1");
+    MessageBox.Show("Status Open Container " + statusOpen);
+}
+```
+**API**
+```C#
+public bool ExecuteOpenContainer(string ContainerName, string ChangeStatusReasonName = "", string Comments = "", string EmployeeName = "", string TxnDateStr = "", bool IgnoreException = true)
 ```
 </details>
 
