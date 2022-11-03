@@ -700,6 +700,8 @@ private string[] listDataCollectionName = new string[] { "Laser Marking Minime",
 **API**
 ```C#
 public async Task<IFinishGoodRecord[]> GetFinishGoodRecordSyncWithServer(string MfgOrderName, string[] listDataCollectionName, TimeSpan? expireTime = null, bool IgnoreException = true)
+
+public async Task<IFinishGoodRecord[]> GetFinishGoodRecordSyncWithServer(string MfgOrderName, TimeSpan? expireTime = null, bool IgnoreException = true)
 ```
 </details>
 
@@ -1220,6 +1222,30 @@ if (bResult)
 **API**
 ```C#
 public bool ExecuteMoveNonStd(string ContainerName, string ToStep, string Resource = "", string Comments = "", string EmployeeName = "", string TxnDateStr = "", bool IgnoreException = true)
+```
+</details>
+
+<details>
+<summary><b>15. GetContainerStatusDetailsCheckAll</b></summary>
+This function is used for Get the details of container from a certain Container
+
+**Usage example**
+```C#
+ServiceUtil oServiceUtil = new ServiceUtil();
+string[] listDataCollectionName = new string[] { "Laser Marking Minime", "HI-POT Minime", "FCT Minime", "Visual Checking Minime", "Weighing Minime", "Laser Marking Ariel", "HI-POT Ariel", "FCT Ariel", "Visual Checking Ariel", "Weighing Ariel" };
+
+CurrentContainerStatus oCurrentContainerStatus = oServiceUtil.GetContainerStatusDetails("7070233900-04", listDataCollectionName);
+if (oCurrentContainerStatus != null)
+{
+    MessageBox.Show("Container: " + oCurrentContainerStatus.ContainerName.ToString() + "\n" +
+                    "Product: " + oCurrentContainerStatus.ProductName.ToString() + "\n" +
+                    "Workflow: " + oCurrentContainerStatus.WorkflowName.ToString() + "\n" +
+                    "Quantity: " + oCurrentContainerStatus.Qty.ToString());
+}
+```
+**API**
+```C#
+public CurrentContainerStatus GetContainerStatusDetailsCheckAll(string ContainerName, string[] listDataCollectionName, bool IgnoreException = true)
 ```
 </details>
 
