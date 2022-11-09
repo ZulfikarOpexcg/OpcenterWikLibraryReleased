@@ -378,6 +378,8 @@ private void Yours_Event_Click(object sender, EventArgs e)
 ```
 **API**
 ```C#
+public ViewContainerStatus[] GetFinishGoodRecord(string MfgOrderName, bool IgnoreException = true)
+
 CurrentContainerStatus[] GetFinishGoodRecord(string MfgOrderName, string[] listDataCollectionName, bool IgnoreException = true)
 ```
 </details>
